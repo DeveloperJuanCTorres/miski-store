@@ -360,7 +360,7 @@
                         <!-- Buttons -->
                         <div class="action-buttons">
 
-                            <button class="btn-luxury-primary">
+                            <button class="btn-luxury-primary w-100">
                                 <i class="fa-solid fa-cart-shopping me-2"></i>
                                 Agregar al carrito
                             </button>
