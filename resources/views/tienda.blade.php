@@ -89,7 +89,13 @@
                             <span class="badge-luxury">Más Vendido</span>
                             <img alt="Perfume Luxury" src="https://lh3.googleusercontent.com/aida-public/AB6AXuANqZ-aKtHHybubTZvgy10qmJbkANKsnnE9Ktm7FsErsiHDG2njBfZLs1zM0QbcPeB_XiPxQiXkHLWaxE0rNbgbnAyDlljjfZ0D4jJHd-mDDxq8nqH-4DFq6IWZObb-Ati1EeKpzxTNgsLmoMxZfqGTVROt_ryylt0tzyegRoIWLNhyz-cUmBbthFc9TtvEPjweABOriAtEIz_34u2ad-jP-fFH_nfzMsDMgxi7IJDUeSgjiHbRlvmNqQXEc-Xr4JrluR39c12-uy4" />
                             <div class="quick-view-overlay">
-                                <button class="btn btn-gold">Vista Rápida</button>
+                                <button 
+                                    class="btn btn-gold"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#quickViewModal"
+                                >
+                                    Vista Rápida
+                                </button>
                             </div>
                         </div>
                         <div class="card-content">
@@ -123,7 +129,13 @@
                         <div class="product-image-wrapper">
                             <img alt="Skincare Serum" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsYtiD9UF8MRUrnkriVGTC0iATJGTD81v7RyBVT0Z6Qpr2H-vP3BlYupzgU0qFMjOwDjE_55TZ3qhslJscJ4Tl7ZQMhkGqe3-lT2uSevilf2orM6WOM3nz9GPZmp7ZyTJgVsmXxkXkqH7qdC0h44dTwUcE3awM28qICNuSxpmHkBJ1k81JJUoM41abWkihC4Er1lN1f9AqYm86mHfEwBiQhL8wQbbSHoVgchhafwUJr3PWX91esvD1NDdDcQq0JDeWUcS_t184rVE" />
                             <div class="quick-view-overlay">
-                                <button class="btn btn-gold">Vista Rápida</button>
+                                <button 
+                                    class="btn btn-gold"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#quickViewModal"
+                                >
+                                    Vista Rápida
+                                </button>
                             </div>
                         </div>
                         <div class="card-content">
@@ -158,7 +170,13 @@
                             <span class="badge-luxury badge-new">Nuevo</span>
                             <img alt="Luxury Candle" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIAJZVOvW0r-ZYoCEUXe27h5PgjSjYv49DZJbf3ydgey_RCoHZZtxBEf3-WL0D-_Bxpq0W_UuBIx7ZjW2saLHWIy7QgsrnryU4P8gLb8dheOTTPi4f3qEV-_eejqimnXu2zq6Qf8KKcqdBzaip5ovbBE3Kzb8VFVumJ_Nj24Ba6zInawkAoW36si0kzGrwEeKI2moOboFWVDN1L8ctDWg4O1_1ASRgRND2vum2fS9MD5OZ4_dnq-sE8pIxDIrnQR2vyL64fSWN1XE" />
                             <div class="quick-view-overlay">
-                                <button class="btn btn-gold">Vista Rápida</button>
+                                <button 
+                                    class="btn btn-gold"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#quickViewModal"
+                                >
+                                    Vista Rápida
+                                </button>
                             </div>
                         </div>
                         <div class="card-content">
@@ -204,6 +222,175 @@
                 </a>
             </div>
         </section>
+    </div>
+</div>
+
+<!-- QUICK VIEW MODAL -->
+<div class="modal fade luxury-modal" id="quickViewModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content border-0 overflow-hidden">
+
+            <!-- Close -->
+            <button type="button" class="btn-close-custom" data-bs-dismiss="modal">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="row g-0">
+
+                <!-- LEFT: IMAGES -->
+                <div class="col-lg-6">
+                    <div class="luxury-gallery h-100">
+
+                        <!-- Main Image -->
+                        <div class="main-image-wrapper">
+                            <span class="badge-luxury">Más Vendido</span>
+
+                            <img 
+                                id="quickViewImage"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuANqZ-aKtHHybubTZvgy10qmJbkANKsnnE9Ktm7FsErsiHDG2njBfZLs1zM0QbcPeB_XiPxQiXkHLWaxE0rNbgbnAyDlljjfZ0D4jJHd-mDDxq8nqH-4DFq6IWZObb-Ati1EeKpzxTNgsLmoMxZfqGTVROt_ryylt0tzyegRoIWLNhyz-cUmBbthFc9TtvEPjweABOriAtEIz_34u2ad-jP-fFH_nfzMsDMgxi7IJDUeSgjiHbRlvmNqQXEc-Xr4JrluR39c12-uy4"
+                                class="main-product-image"
+                                alt="Producto"
+                            >
+
+                            <div class="image-overlay-gradient"></div>
+                        </div>
+
+                        <!-- Thumbnails -->
+                        <div class="thumbnail-wrapper">
+                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuANqZ-aKtHHybubTZvgy10qmJbkANKsnnE9Ktm7FsErsiHDG2njBfZLs1zM0QbcPeB_XiPxQiXkHLWaxE0rNbgbnAyDlljjfZ0D4jJHd-mDDxq8nqH-4DFq6IWZObb-Ati1EeKpzxTNgsLmoMxZfqGTVROt_ryylt0tzyegRoIWLNhyz-cUmBbthFc9TtvEPjweABOriAtEIz_34u2ad-jP-fFH_nfzMsDMgxi7IJDUeSgjiHbRlvmNqQXEc-Xr4JrluR39c12-uy4" class="thumb-image active">
+                            
+                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsYtiD9UF8MRUrnkriVGTC0iATJGTD81v7RyBVT0Z6Qpr2H-vP3BlYupzgU0qFMjOwDjE_55TZ3qhslJscJ4Tl7ZQMhkGqe3-lT2uSevilf2orM6WOM3nz9GPZmp7ZyTJgVsmXxkXkqH7qdC0h44dTwUcE3awM28qICNuSxpmHkBJ1k81JJUoM41abWkihC4Er1lN1f9AqYm86mHfEwBiQhL8wQbbSHoVgchhafwUJr3PWX91esvD1NDdDcQq0JDeWUcS_t184rVE" class="thumb-image">
+
+                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIAJZVOvW0r-ZYoCEUXe27h5PgjSjYv49DZJbf3ydgey_RCoHZZtxBEf3-WL0D-_Bxpq0W_UuBIx7ZjW2saLHWIy7QgsrnryU4P8gLb8dheOTTPi4f3qEV-_eejqimnXu2zq6Qf8KKcqdBzaip5ovbBE3Kzb8VFVumJ_Nj24Ba6zInawkAoW36si0kzGrwEeKI2moOboFWVDN1L8ctDWg4O1_1ASRgRND2vum2fS9MD5OZ4_dnq-sE8pIxDIrnQR2vyL64fSWN1XE" class="thumb-image">
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- RIGHT: CONTENT -->
+                <div class="col-lg-6">
+                    <div class="luxury-content">
+
+                        <!-- Brand -->
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <span class="product-brand">
+                                Categoría
+                            </span>
+
+                            <!-- <button class="btn-wishlist">
+                                <i class="fa-regular fa-heart"></i>
+                            </button> -->
+                        </div>
+
+                        <!-- Title -->
+                        <h2 class="product-title">
+                            Perfume Imperial Noir
+                        </h2>
+
+                        <!-- Rating -->
+                        <div class="d-flex align-items-center gap-3 mb-4">
+                            <div class="stars text-gold">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star-half-stroke"></i>
+                            </div>
+
+                            <span class="reviews-count">
+                                124 reseñas
+                            </span>
+                        </div>
+
+                        <!-- Price -->
+                        <div class="price-wrapper mb-4">
+                            <span class="current-price">
+                                S/ 289.90
+                            </span>
+
+                            <span class="old-price">
+                                S/ 349.90
+                            </span>
+
+                            <span class="discount-badge">
+                                -20%
+                            </span>
+                        </div>
+
+                        <!-- Description -->
+                        <p class="product-description">
+                            Una fragancia sofisticada y envolvente con notas amaderadas, ámbar cálido y esencia floral premium. Diseñada para quienes buscan exclusividad y presencia inolvidable.
+                        </p>
+
+                        <!-- Features -->
+                        <div class="product-features">
+
+                            <div class="feature-item">
+                                <i class="fa-solid fa-check"></i>
+                                <span>Producto 100% original</span>
+                            </div>
+
+                            <div class="feature-item">
+                                <i class="fa-solid fa-truck-fast"></i>
+                                <span>Envíos rápidos a todo el país</span>
+                            </div>
+
+                            <div class="feature-item">
+                                <i class="fa-solid fa-shield-heart"></i>
+                                <span>Garantía de satisfacción</span>
+                            </div>
+
+                        </div>
+
+                        <!-- Quantity -->
+                        <div class="quantity-section">
+
+                            <span class="quantity-label">
+                                Cantidad
+                            </span>
+
+                            <div class="quantity-box">
+                                <button>-</button>
+                                <input type="text" value="1">
+                                <button>+</button>
+                            </div>
+
+                        </div>
+
+                        <!-- Buttons -->
+                        <div class="action-buttons">
+
+                            <button class="btn-luxury-primary">
+                                <i class="fa-solid fa-cart-shopping me-2"></i>
+                                Agregar al carrito
+                            </button>
+
+                            <!-- <button class="btn-luxury-secondary">
+                                Comprar ahora
+                            </button> -->
+
+                        </div>
+
+                        <!-- Footer Info -->
+                        <!-- <div class="product-meta">
+
+                            <div>
+                                <span>SKU:</span>
+                                <strong>PRF-00921</strong>
+                            </div>
+
+                            <div>
+                                <span>Categoría:</span>
+                                <strong>Perfumes Premium</strong>
+                            </div>
+
+                        </div> -->
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
     </div>
 </div>
 

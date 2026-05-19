@@ -1,0 +1,321 @@
+/* =========================================
+   LUXURY MODAL
+========================================= */
+
+.luxury-modal .modal-content{
+    background: #0f0f10;
+    border-radius: 32px;
+    backdrop-filter: blur(20px);
+    box-shadow:
+        0 20px 80px rgba(0,0,0,.5),
+        inset 0 1px 0 rgba(255,255,255,.04);
+    color: #fff;
+}
+
+.luxury-modal .modal-dialog{
+    max-width: 1400px;
+}
+
+.btn-close-custom{
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,.1);
+    background: rgba(255,255,255,.05);
+    color: #fff;
+    z-index: 10;
+    transition: .3s ease;
+}
+
+.btn-close-custom:hover{
+    transform: rotate(90deg);
+    background: rgba(255,255,255,.12);
+}
+
+/* =========================================
+   GALLERY
+========================================= */
+
+.luxury-gallery{
+    background:
+        radial-gradient(circle at top right, rgba(212,175,55,.15), transparent 30%),
+        #151515;
+    padding: 40px;
+    position: relative;
+}
+
+.main-image-wrapper{
+    position: relative;
+    border-radius: 28px;
+    overflow: hidden;
+    background: linear-gradient(145deg,#1d1d1f,#0f0f10);
+}
+
+.main-product-image{
+    width: 100%;
+    height: 650px;
+    object-fit: cover;
+    transition: 0.6s ease;
+}
+
+.main-product-image:hover{
+    transform: scale(1.05);
+}
+
+.image-overlay-gradient{
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,.5), transparent 40%);
+}
+
+.thumbnail-wrapper{
+    display: flex;
+    gap: 14px;
+    margin-top: 20px;
+}
+
+.thumb-image{
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 18px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    opacity: .6;
+    transition: .3s ease;
+}
+
+.thumb-image:hover,
+.thumb-image.active{
+    opacity: 1;
+    border-color: #d4af37;
+    transform: translateY(-4px);
+}
+
+/* =========================================
+   CONTENT
+========================================= */
+
+.luxury-content{
+    padding: 60px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.product-brand{
+    letter-spacing: .25em;
+    text-transform: uppercase;
+    font-size: 11px;
+    color: #9d9d9d;
+}
+
+.product-title{
+    font-size: 52px;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 24px;
+    color: #fff;
+}
+
+.reviews-count{
+    color: #8d8d8d;
+    font-size: 14px;
+}
+
+.price-wrapper{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.current-price{
+    font-size: 42px;
+    font-weight: 700;
+    color: #d4af37;
+}
+
+.old-price{
+    font-size: 22px;
+    text-decoration: line-through;
+    color: #6f6f6f;
+}
+
+.discount-badge{
+    background: rgba(212,175,55,.12);
+    color: #d4af37;
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.product-description{
+    color: #b8b8b8;
+    line-height: 1.9;
+    margin-bottom: 32px;
+}
+
+.product-features{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 36px;
+}
+
+.feature-item{
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    color: #d6d6d6;
+}
+
+.feature-item i{
+    color: #d4af37;
+}
+
+/* =========================================
+   QUANTITY
+========================================= */
+
+.quantity-section{
+    margin-bottom: 36px;
+}
+
+.quantity-label{
+    display: block;
+    margin-bottom: 14px;
+    color: #9f9f9f;
+    font-size: 14px;
+}
+
+.quantity-box{
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 16px;
+    overflow: hidden;
+    background: rgba(255,255,255,.03);
+}
+
+.quantity-box button{
+    width: 50px;
+    height: 50px;
+    border: 0;
+    background: transparent;
+    color: #fff;
+    font-size: 20px;
+}
+
+.quantity-box input{
+    width: 60px;
+    border: 0;
+    background: transparent;
+    color: #fff;
+    text-align: center;
+    outline: none;
+}
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+.action-buttons{
+    display: flex;
+    gap: 16px;
+    margin-bottom: 36px;
+}
+
+.btn-luxury-primary{
+    flex: 1;
+    height: 60px;
+    border: 0;
+    border-radius: 18px;
+    background: linear-gradient(135deg,#d4af37,#f5d77a);
+    color: #111;
+    font-weight: 700;
+    transition: .4s ease;
+}
+
+.btn-luxury-primary:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(212,175,55,.35);
+}
+
+.btn-luxury-secondary{
+    flex: 1;
+    height: 60px;
+    border-radius: 18px;
+    border: 1px solid rgba(255,255,255,.12);
+    background: transparent;
+    color: #fff;
+    font-weight: 600;
+    transition: .4s ease;
+}
+
+.btn-luxury-secondary:hover{
+    background: rgba(255,255,255,.06);
+}
+
+.btn-wishlist{
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,.08);
+    background: rgba(255,255,255,.04);
+    color: #fff;
+    transition: .3s ease;
+}
+
+.btn-wishlist:hover{
+    color: #ff4d6d;
+    transform: scale(1.08);
+}
+
+/* =========================================
+   META
+========================================= */
+
+.product-meta{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,.08);
+    color: #8c8c8c;
+    font-size: 14px;
+}
+
+.product-meta strong{
+    color: #fff;
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width: 991px){
+
+    .luxury-content{
+        padding: 35px 25px;
+    }
+
+    .product-title{
+        font-size: 36px;
+    }
+
+    .main-product-image{
+        height: 420px;
+    }
+
+    .action-buttons{
+        flex-direction: column;
+    }
+
+}
