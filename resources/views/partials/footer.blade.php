@@ -14,42 +14,42 @@
             <div class="col-lg-4 pe-lg-5">
 
                 <div class="d-flex align-items-center gap-3 mb-4">
-                    <div class="footer-logo">
+                    <!-- <div class="footer-logo">
                         <i class="fa-solid fa-bag-shopping"></i>
-                    </div>
+                    </div> -->
+                    <img src="{{asset ('storage/' . $company->logo)}}" alt="" width="100">
 
                     <div>
-                        <h2 class="font-display text-white mb-0">
-                            Misk'i Store
+                        <h2 class="font-display text-gold mb-0">
+                            {{ $company->nombre }}
                         </h2>
 
-                        <span class="small text-uppercase text-gold tracking">
+                        <!-- <span class="small text-uppercase text-gold tracking">
                             Luxury Fashion Store
-                        </span>
+                        </span> -->
                     </div>
                 </div>
 
                 <p class="text-footer mb-4">
-                    Redefiniendo la belleza y el estilo a través de productos exclusivos,
-                    experiencias premium y atención personalizada.
+                    {{$company->descripcion}}
                 </p>
 
                 <!-- SOCIAL -->
                 <div class="d-flex gap-3">
 
-                    <a href="#" class="social-link">
+                    <a href="{{$company->link_facebook}}" target="_blank" class="social-link">
                         <i class="fab fa-facebook-f"></i>
                     </a>
 
-                    <a href="#" class="social-link">
+                    <a href="{{$company->link_instagram}}" target="_blank" class="social-link">
                         <i class="fab fa-instagram"></i>
                     </a>
 
-                    <a href="#" class="social-link">
+                    <a href="{{$company->link_tiktok}}" target="_blank" class="social-link">
                         <i class="fab fa-tiktok"></i>
                     </a>
 
-                    <a href="#" class="social-link">
+                    <a href="{{$company->whatsapp}}" target="_blank" class="social-link">
                         <i class="fab fa-whatsapp"></i>
                     </a>
 

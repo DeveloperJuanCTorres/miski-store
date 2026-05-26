@@ -2,12 +2,76 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Brand;
+use App\Models\Company;
+use App\Models\Product;
+use App\Models\Taxonomy;
 use Illuminate\Http\Request;
 
 class StoreController extends Controller
 {
-    public function index()
+
+    public function index(Request $request)
     {
-        return view('tienda');
+        $company = Company::first();
+        $query = Product::with(['brand', 'taxonomy']);
+
+        // FILTRO POR CATEGORÍA
+        if($request->category)
+        {
+            $query->where('taxonomy_id', $request->category);
+        }
+
+        $products = $query->latest()->paginate(9);
+
+        $brands = Brand::all();
+
+        $categories = Taxonomy::all();
+
+        return view('tienda', compact(
+            'products',
+            'brands',
+            'categories',
+            'company'
+        ));
+    }
+
+    public function filter(Request $request)
+    {
+        $query = Product::with(['taxonomy','brand']);
+
+        if($request->category)
+        {
+            $query->where('taxonomy_id', $request->category);
+        }
+
+        if($request->brand)
+        {
+            $query->where('brand_id', $request->brand);
+        }
+
+        if($request->price)
+        {
+            $query->where('price', '<=', $request->price);
+        }
+
+        switch($request->sort)
+        {
+            case 'price_asc':
+                $query->orderBy('price', 'asc');
+                break;
+
+            case 'price_desc':
+                $query->orderBy('price', 'desc');
+                break;
+
+            default:
+                $query->latest();
+                break;
+        }
+
+        $products = $query->paginate(9);
+
+        return view('partials.products-grid', compact('products'))->render();
     }
 }

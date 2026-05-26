@@ -78,50 +78,29 @@
             <a class="text-primary-custom label-caps border-bottom border-primary text-decoration-none pb-1" href="#">Ver todas las categorías</a>
         </div>
         <div class="row g-4">
-            <!-- Category 1 -->
+             @foreach($categories as $category)
             <div class="col-md-3">
-                <div class="category-card">
-                    <img alt="Floral Noir" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgBCkkEPoLQEpSCZD9-DVBsFNM1WMarxiDBTutoW1ytnR4gNQm5M7Wc26KOjs7-g5mn-PpOENybatBFbjtyY-TpZQ2zV4jyBAudrKZvkv7Kx2PaQBxnRgV0p3fHRo9K1vGPyFA857NFd8jXcOgS0_n7iXsINgra0eVDxbfmzAb6JWc-bZyBtneRTFBT8gmeCG9-DLqDOqv879_EAYUzmCSOqdmt78NXXso71lmZBoaTm9yDyvsr7Kcx2MU95Ez8FGF6KoG1RfoZZk" />
-                    <div class="category-overlay"></div>
-                    <div class="category-content glass-card">
-                        <h3 class="font-display h4 text-primary-custom mb-1">Perfumes</h3>
-                        <p class="text-on-surface-variant mb-0">Esencias botánicas intensas</p>
+                <a href="{{ route('tienda', ['category' => $category->id]) }}"
+                    class="text-decoration-none">
+                    <div class="category-card">
+                        <img alt="Floral Noir"
+                            src="{{ asset('storage/' . $category->image) }}" />
+
+                        <div class="category-overlay"></div>
+
+                        <div class="category-content glass-card">
+                            <h3 class="font-display h4 text-primary-custom mb-1">
+                                {{ $category->name }}
+                            </h3>
+
+                            <p class="text-white mb-0">
+                                Esencias botánicas intensas
+                            </p>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
-            <!-- Category 2 -->
-            <div class="col-md-3">
-                <div class="category-card">
-                    <img alt="Oriental Amaderado" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNXTPr9wfqBujtmbKI84oQoqo3yLaxto0uwBjmYmxn_TcdleoBGkcCTWty4Zpl22zLxM460wm5gRGK5Jif7KNlR7H3ECVRkn8eQNUwL0c_ocEmh1CZXeajnFHXxcB8cm5DgCkzKo1_P1jrbeG2D5T6Mnpg4txdwXAnzJySHmqikEaVVeJF3MUFkxAiveIUvXMSjiKK8wXXp9qSYCMOIPStuRX6DNZvGMNiXC3s6C6x-0snL6nvLeUmxJDL0hC1fv4CZ-l0rL6mzCM" />
-                    <div class="category-overlay"></div>
-                    <div class="category-content glass-card">
-                        <h3 class="font-display h4 text-primary-custom mb-1">Colonias</h3>
-                        <p class="text-on-surface-variant mb-0">Matices profundos y místicos</p>
-                    </div>
-                </div>
-            </div>
-            <!-- Category 3 -->
-            <div class="col-md-3">
-                <div class="category-card">
-                    <img alt="Piel Puro" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAADQ44TfkmZz83m8SghrJRbNKKtII6lZs6OoP0E9yWX5bTf7xuDReQWk096YPj6E-d3osoOi2QKpa6CgEoCpg-Z-ElVn17C3QbVTFuDD0TK8AogfuZbtgWTs4u_lAOz6kOmLauHWqv8MpUoBgcxGMmSaaTXJWkiBM40TZKCyjOlQCB0iEhVw9i7c_D3HxLFcQI9fqZo40L1hRXPxipriBy5mrVG-Ark7pSNAdPAyQTiY2VWh5p98aLe1QBGdVRG2qIFPr0VcDZH2k" />
-                    <div class="category-overlay"></div>
-                    <div class="category-content glass-card">
-                        <h3 class="font-display h4 text-primary-custom mb-1">Cuidado personal</h3>
-                        <p class="text-on-surface-variant mb-0">Rituales de lujo molecular</p>
-                    </div>
-                </div>
-            </div>
-            <!-- Category 4 -->
-            <div class="col-md-3">
-                <div class="category-card">
-                    <img alt="Oriental Amaderado" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNXTPr9wfqBujtmbKI84oQoqo3yLaxto0uwBjmYmxn_TcdleoBGkcCTWty4Zpl22zLxM460wm5gRGK5Jif7KNlR7H3ECVRkn8eQNUwL0c_ocEmh1CZXeajnFHXxcB8cm5DgCkzKo1_P1jrbeG2D5T6Mnpg4txdwXAnzJySHmqikEaVVeJF3MUFkxAiveIUvXMSjiKK8wXXp9qSYCMOIPStuRX6DNZvGMNiXC3s6C6x-0snL6nvLeUmxJDL0hC1fv4CZ-l0rL6mzCM" />
-                    <div class="category-overlay"></div>
-                    <div class="category-content glass-card">
-                        <h3 class="font-display h4 text-primary-custom mb-1">Maquillaje</h3>
-                        <p class="text-on-surface-variant mb-0">Matices profundos y místicos</p>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>
@@ -133,107 +112,35 @@
             <p class="text-on-surface-variant">Las fragancias más codiciadas de la temporada</p>
         </div>
         <div class="row g-4">
-            <!-- Product 1 -->
+             @foreach($products_mas_vendidos as $product)
             <div class="col- 12 col-md-6 col-lg-3">
                 <div class="product-card d-flex flex-column">
                     <div class="img-container mb-3">
                         <span class="badge-exclusive">Exclusivo</span>
-                        <img alt="Oud Imperial" class="img-fluid" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHiH9a9asbXWz7umBbJ7qxOnBZ9bNCP7TM34oWSmdVWatcm5YlpXync6LOfwSX69gu4msOpcsOaT00Tdl6Y6o0hr2a_fe6_VYAkC5ie1TZ4J2ztZwbWqPQXwyfTcKi_wQsc0S8Z1bhTazVrWeHXm_O0W3Bp9n9Up4uYnlC3I62epUxYsv_S7EAqXwSNCUGJ0e34SQTgPrqG-q_X6EYTjPJlWVayhpNKWP3fai5fSaknCxFv-f3MQSf1ulomfZuRQkzbOq12XpRRF4" />
-                        <button class="quick-add-btn">AÑADIR RÁPIDO</button>
+                        @php
+                            $imagen = json_decode($product->images, true)[0] ?? 'default.jpg';
+                        @endphp
+                        <img alt="Oud Imperial" class="img-fluid" src="{{ asset('storage/' . $imagen) }}" />
+                        <button class="quick-add-btn btnQuickView"
+                            data-id="{{ $product->id }}"
+                            data-bs-toggle="modal"
+                            data-bs-target="#quickViewModal"
+                            
+                            data-name="{{ $product->name }}"
+                            data-price="{{ number_format($product->price, 2) }}"
+                            data-priceoferta="{{ number_format($product->price_oferta ?? $product->price, 2) }}"
+                            data-description="{{ strip_tags($product->description) }}"
+                            data-category="{{ $product->taxonomy->name ?? 'Categoría' }}"
+                            data-images='@json(json_decode($product->images, true))'>
+                         VER DETALLE
+                        </button>
                     </div>
-                    <h3 class="font-display h6 mb-1">Misk'i Oud Imperial</h3>
-                    <p class="label-caps text-on-surface-variant mb-2" style="font-size: 11px;">Eau de Parfum • 100ml</p>
-                    <p class="text-primary-custom fs-5 mb-0">$285.00</p>
+                    <h3 class="font-display h6 mb-1">{{$product->name}}</h3>
+                    <!-- <p class="label-caps text-on-surface-variant mb-2" style="font-size: 11px;">Eau de Parfum • 100ml</p> -->
+                    <p class="text-primary-custom fs-5 mb-0">S/. {{ number_format($product->price, 2) }}</p>
                 </div>
             </div>
-            <!-- Product 2 -->
-            <div class="col- 12 col-md- 6 col-lg-3">
-                <div class="product-card d-flex flex-column">
-                    <div class="img-container mb-3">
-                        <img alt="L'Aurore" class="img-fluid" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-_VZlKJyd5M8Y9EySEhZRzFdC1F_XoBJIMAyW6rWZVBu2n_3r-YHC-dVd_ILF91Ru2gs9XbjYESsAXXlT2fRPLp7TPj2qDxCz3yNnR0QYHjBYOqRbBYt3XlyakPjAlueogiLAye6hP_ZUL4wt89D8NDQs2KVjZ9FVjDJVonNR_rpdVfnYlDXTgNu78RVnqSJ9CnlafQrKz5z-b2oTDxgqS8cFDGjMAD2MTX6cZJHt9yFVOLBjxzIGfemEbVp2ELmQM-vI6kCinkI" />
-                        <button class="quick-add-btn">AÑADIR RÁPIDO</button>
-                    </div>
-                    <h3 class="font-display h6 mb-1">L'Aurore Mystique</h3>
-                    <p class="label-caps text-on-surface-variant mb-2" style="font-size: 11px;">Eau de Parfum • 75ml</p>
-                    <p class="text-primary-custom fs-5 mb-0">$195.00</p>
-                </div>
-            </div>
-            <!-- Product 3 -->
-            <div class="col- 12 col-md- 6 col-lg-3">
-                <div class="product-card d-flex flex-column">
-                    <div class="img-container mb-3">
-                        <span class="badge-exclusive">Exclusivo</span>
-                        <img alt="Santal Absolu" class="img-fluid" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjrUF9YyWQTT68-lq3AEOx6EQvo8y0uFuRqBR5kZw0mmXOqQEM8e3dovcpA_vpe-w0F7hcc0fctkr8PyByg9S8M8yWQsRQpt2nRi7_lptrFXagYvhX2KgkLkFSP25h48d044zmHXBRS3BkCWpJ_J2ZFNdOkxSbSoH_v5ekl-hPwz-HoMHhYrtHWBEcwZY9YzvtprWVrn-rk9qv_6O4FHoUNSyQBoL14RXOrJGfIZU5jAdv1EbjVF8tlc40EPSWvUdfWdkZ3nvUf1g" />
-                        <button class="quick-add-btn">AÑADIR RÁPIDO</button>
-                    </div>
-                    <h3 class="font-display h6 mb-1">Santal Absolu</h3>
-                    <p class="label-caps text-on-surface-variant mb-2" style="font-size: 11px;">Extrait de Parfum • 50ml</p>
-                    <p class="text-primary-custom fs-5 mb-0">$320.00</p>
-                </div>
-            </div>
-            <!-- Product 4 -->
-            <div class="col- 12 col-md- 6 col-lg-3">
-                <div class="product-card d-flex flex-column">
-                    <div class="img-container mb-3">
-                        <img alt="Seda Nocturna" class="img-fluid" src="https://lh3.googleusercontent.com/aida-public/AB6AXuApid3Kqwu7_UnABvpQEU9PqaFw1pwPgmOXRRGXpVPvg7iQuDSHxV_KqHyHrh9v4clc6gW8qvK9-qPaRLNCqDiUNNlfI6KcUupqPNmQ0qpgeFlpxMiWpLwmEJRenKXn3u6-MF8J-h0ca6-CPEO5BgHkzmaBSGvixHHygrEViK5rd6BLt9UrdR0A-W7_8XHb71BW2GvCXHq6yIjkSoz6iNEJad2AYyNt3Nk7-6GI3NyoCsAM-YYZK1-kaFVcs_YulB1ccXv2b4GHOyU" />
-                        <button class="quick-add-btn">AÑADIR RÁPIDO</button>
-                    </div>
-                    <h3 class="font-display h6 mb-1">Seda Nocturna</h3>
-                    <p class="label-caps text-on-surface-variant mb-2" style="font-size: 11px;">Eau de Parfum • 100ml</p>
-                    <p class="text-primary-custom fs-5 mb-0">$210.00</p>
-                </div>
-            </div>
-
-            <!-- Product 1 -->
-            <div class="col- 12 col-md-6 col-lg-3">
-                <div class="product-card d-flex flex-column">
-                    <div class="img-container mb-3">
-                        <span class="badge-exclusive">Exclusivo</span>
-                        <img alt="Oud Imperial" class="img-fluid" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHiH9a9asbXWz7umBbJ7qxOnBZ9bNCP7TM34oWSmdVWatcm5YlpXync6LOfwSX69gu4msOpcsOaT00Tdl6Y6o0hr2a_fe6_VYAkC5ie1TZ4J2ztZwbWqPQXwyfTcKi_wQsc0S8Z1bhTazVrWeHXm_O0W3Bp9n9Up4uYnlC3I62epUxYsv_S7EAqXwSNCUGJ0e34SQTgPrqG-q_X6EYTjPJlWVayhpNKWP3fai5fSaknCxFv-f3MQSf1ulomfZuRQkzbOq12XpRRF4" />
-                        <button class="quick-add-btn">AÑADIR RÁPIDO</button>
-                    </div>
-                    <h3 class="font-display h6 mb-1">Misk'i Oud Imperial</h3>
-                    <p class="label-caps text-on-surface-variant mb-2" style="font-size: 11px;">Eau de Parfum • 100ml</p>
-                    <p class="text-primary-custom fs-5 mb-0">$285.00</p>
-                </div>
-            </div>
-            <!-- Product 2 -->
-            <div class="col- 12 col-md- 6 col-lg-3">
-                <div class="product-card d-flex flex-column">
-                    <div class="img-container mb-3">
-                        <img alt="L'Aurore" class="img-fluid" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-_VZlKJyd5M8Y9EySEhZRzFdC1F_XoBJIMAyW6rWZVBu2n_3r-YHC-dVd_ILF91Ru2gs9XbjYESsAXXlT2fRPLp7TPj2qDxCz3yNnR0QYHjBYOqRbBYt3XlyakPjAlueogiLAye6hP_ZUL4wt89D8NDQs2KVjZ9FVjDJVonNR_rpdVfnYlDXTgNu78RVnqSJ9CnlafQrKz5z-b2oTDxgqS8cFDGjMAD2MTX6cZJHt9yFVOLBjxzIGfemEbVp2ELmQM-vI6kCinkI" />
-                        <button class="quick-add-btn">AÑADIR RÁPIDO</button>
-                    </div>
-                    <h3 class="font-display h6 mb-1">L'Aurore Mystique</h3>
-                    <p class="label-caps text-on-surface-variant mb-2" style="font-size: 11px;">Eau de Parfum • 75ml</p>
-                    <p class="text-primary-custom fs-5 mb-0">$195.00</p>
-                </div>
-            </div>
-            <!-- Product 3 -->
-            <div class="col- 12 col-md- 6 col-lg-3">
-                <div class="product-card d-flex flex-column">
-                    <div class="img-container mb-3">
-                        <span class="badge-exclusive">Exclusivo</span>
-                        <img alt="Santal Absolu" class="img-fluid" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjrUF9YyWQTT68-lq3AEOx6EQvo8y0uFuRqBR5kZw0mmXOqQEM8e3dovcpA_vpe-w0F7hcc0fctkr8PyByg9S8M8yWQsRQpt2nRi7_lptrFXagYvhX2KgkLkFSP25h48d044zmHXBRS3BkCWpJ_J2ZFNdOkxSbSoH_v5ekl-hPwz-HoMHhYrtHWBEcwZY9YzvtprWVrn-rk9qv_6O4FHoUNSyQBoL14RXOrJGfIZU5jAdv1EbjVF8tlc40EPSWvUdfWdkZ3nvUf1g" />
-                        <button class="quick-add-btn">AÑADIR RÁPIDO</button>
-                    </div>
-                    <h3 class="font-display h6 mb-1">Santal Absolu</h3>
-                    <p class="label-caps text-on-surface-variant mb-2" style="font-size: 11px;">Extrait de Parfum • 50ml</p>
-                    <p class="text-primary-custom fs-5 mb-0">$320.00</p>
-                </div>
-            </div>
-            <!-- Product 4 -->
-            <div class="col- 12 col-md- 6 col-lg-3">
-                <div class="product-card d-flex flex-column">
-                    <div class="img-container mb-3">
-                        <img alt="Seda Nocturna" class="img-fluid" src="https://lh3.googleusercontent.com/aida-public/AB6AXuApid3Kqwu7_UnABvpQEU9PqaFw1pwPgmOXRRGXpVPvg7iQuDSHxV_KqHyHrh9v4clc6gW8qvK9-qPaRLNCqDiUNNlfI6KcUupqPNmQ0qpgeFlpxMiWpLwmEJRenKXn3u6-MF8J-h0ca6-CPEO5BgHkzmaBSGvixHHygrEViK5rd6BLt9UrdR0A-W7_8XHb71BW2GvCXHq6yIjkSoz6iNEJad2AYyNt3Nk7-6GI3NyoCsAM-YYZK1-kaFVcs_YulB1ccXv2b4GHOyU" />
-                        <button class="quick-add-btn">AÑADIR RÁPIDO</button>
-                    </div>
-                    <h3 class="font-display h6 mb-1">Seda Nocturna</h3>
-                    <p class="label-caps text-on-surface-variant mb-2" style="font-size: 11px;">Eau de Parfum • 100ml</p>
-                    <p class="text-primary-custom fs-5 mb-0">$210.00</p>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>
@@ -296,6 +203,133 @@
         </div>
     </div>
 </section>
+
+<!-- Liquidación Premium Section -->
+<section class="py-5 position-relative overflow-hidden" style="background: linear-gradient(135deg, #120f08 0%, #1f1a10 50%, #0f0d09 100%);">
+    
+    <!-- Glow Effects -->
+    <div class="position-absolute top-0 start-0 w-100 h-100">
+        <div class="liquidation-glow glow-1"></div>
+        <div class="liquidation-glow glow-2"></div>
+    </div>
+
+    <div class="container container-max px-4 px-md-5 py-5 position-relative">
+
+        <!-- Header -->
+        <div class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-end mb-5 gap-4">
+            <div>
+                <span class="label-caps text-danger d-block mb-3" style="letter-spacing: .3em;">
+                    Últimas Unidades
+                </span>
+
+                <h2 class="font-display display-5 mb-3 text-gold-gradient">
+                    Liquidación Exclusiva
+                </h2>
+
+                <p class="text-on-surface-variant fs-5 mb-0" style="max-width: 650px;">
+                    Fragancias y piezas de colección con descuentos irrepetibles antes de abandonar nuestra bóveda privada.
+                </p>
+            </div>
+
+            <!-- Countdown -->
+            <div class="glass-card px-4 py-3 d-flex align-items-center gap-3">
+                <div>
+                    <small class="label-caps text-on-surface-variant d-block mb-1">
+                        Finaliza en
+                    </small>
+
+                    <div class="d-flex gap-2">
+                        <div class="sale-timer-box">08</div>
+                        <div class="sale-timer-box">22</div>
+                        <div class="sale-timer-box">41</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Products -->
+        <div class="row g-4">
+
+            @foreach($products_en_liquidacion as $product)
+            <div class="col-12 col-md-6 col-lg-3">
+                <div class="liquidation-card h-100">
+
+                    <div class="position-relative overflow-hidden rounded-4 mb-3">
+
+                        <span class="sale-badge">
+                            -{{ number_format((($product->price - $product->price_oferta) / $product->price) * 100, 0) }}%
+                        </span>
+                        @php
+                            $imagen = json_decode($product->images, true)[0] ?? 'default.jpg';
+                        @endphp
+                        <img
+                            src="{{ asset('storage/' . $imagen) }}"
+                            class="img-fluid liquidation-img"
+                            alt="Perfume"
+                        >
+
+                        <div class="liquidation-overlay">
+                            <button class="btn btn-gold px-4 py-2 label-caps fw-bold btnQuickView"
+                                data-id="{{ $product->id }}"
+                                data-bs-toggle="modal"
+                                data-bs-target="#quickViewModal"
+                                
+                                data-name="{{ $product->name }}"
+                                data-price="{{ number_format($product->price, 2) }}"
+                                data-priceoferta="{{ number_format($product->price_oferta ?? $product->price, 2) }}"
+                                data-description="{{ strip_tags($product->description) }}"
+                                data-category="{{ $product->taxonomy->name ?? 'Categoría' }}"
+                                data-images='@json(json_decode($product->images, true))'>
+                                Ver detalle
+                            </button>
+                        </div>
+
+                    </div>
+
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <div>
+                            <h3 class="font-display h5 mb-1">
+                                {{ $product->name }}
+                            </h3>
+
+                            <!-- <p class="label-caps text-on-surface-variant mb-0" style="font-size: 11px;">
+                                Extrait de Parfum • 100ml
+                            </p> -->
+                        </div>
+
+                        <!-- <span class="stock-pill">
+                            3 left
+                        </span> -->
+                    </div>
+
+                    <div class="d-flex align-items-center gap-3">
+                        <span class="text-decoration-line-through text-on-surface-variant fs-5">
+                            S/. {{ number_format($product->price, 2) }}
+                        </span>
+
+                        <span class="text-gold fw-bold fs-3">
+                            S/. {{ number_format($product->price_oferta, 2) }}
+                        </span>
+                    </div>
+
+                </div>
+            </div>
+            @endforeach
+        </div>
+
+        <!-- CTA -->
+        <div class="text-center mt-5 pt-3">
+            <button class="btn btn-lg px-5 py-3 fw-bold label-caps"
+                style="background: linear-gradient(135deg, #d4af37, #f5d77a); color:#111; border:none;">
+                Explorar Liquidación
+            </button>
+        </div>
+
+    </div>
+</section>
+
+@include('partials.moda-product')
+
 
 @endsection
 

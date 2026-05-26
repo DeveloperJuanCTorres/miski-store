@@ -7,7 +7,14 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Miski Store') }}</title>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="logos/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="logos/android-chrome-512x512.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="logos/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="logos/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="logos/favicon-16x16.png">
+    <link rel="manifest" href="logos/site.webmanifest">
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
@@ -35,5 +42,8 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{{ asset('js/general.js') }}"></script>
+    
 </body>
 </html>

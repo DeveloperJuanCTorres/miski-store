@@ -10,13 +10,14 @@
         <!-- LOGO -->
         <a class="navbar-brand d-flex align-items-center gap-3 m-0" href="{{ route('home') }}">
 
-            <div class="brand-logo">
-                <i class="fa-solid fa-wand-magic-sparkles"></i>
-            </div>
+            <!-- <div class="brand-logo">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>                
+            </div> -->
+            <img src="{{asset ('storage/' . $company->logo)}}" alt="" width="100">
 
             <div>
-                <h2 class="font-display text-white mb-0">
-                    Misk'i Store
+                <h2 class="font-display text-gold mb-0">
+                    {{$company->nombre}}
                 </h2>
             </div>
 
@@ -107,18 +108,19 @@
 
         <div class="d-flex align-items-center gap-3">
 
-            <div class="brand-logo">
+            <!-- <div class="brand-logo">
                 <i class="fa-solid fa-wand-magic-sparkles"></i>
-            </div>
+            </div> -->
+            <img src="{{asset ('storage/' . $company->logo)}}" alt="" width="90">
 
             <div>
-                <h5 class="text-white mb-0">
-                    Misk'i Store
+                <h5 class="text-gold mb-0">
+                    {{$company->nombre}}
                 </h5>
 
-                <small class="text-gold">
+                <!-- <small class="text-gold">
                     Luxury Fashion
-                </small>
+                </small> -->
             </div>
 
         </div>
@@ -237,27 +239,61 @@
 <!-- SideNavBar (Cart Preview) -->
 <aside class="cart-drawer group">
     <div class="cart-trigger">
-        <i class="fa-solid fa-bag-shopping fs-4"></i>
+        <i class="fa-solid fa-bag-shopping fs-4"></i>     
+        <span class="cart-count-badge" id="cartCount">
+            {{ $cartCount }}
+        </span>       
     </div>
     <div class="mb-4">
         <h2 class="font-display h5 text-gold mb-1">Tu Selección</h2>
         <p class="text-variant mb-0 small">Artículos premium listos para pagar</p>
     </div>
-    <div class="flex-grow-1 overflow-auto pe-2">
+    <div class="flex-grow-1 overflow-auto pe-2" id="cartItemsContainer">
         <!-- Mini Cart Item -->
-        <div class="d-flex gap-3 p-2 rounded hover-bg-white-5 mb-3" style="background: rgba(255,255,255,0.05);">
-            <img alt="Midnight Amber" class="rounded object-fit-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUMLOWH0h4pJsg2EqBF3LoRqOND9el9SgvfImYzVHGVROtMLg7vxaAFHemns89irZIpL2iRpumBwtFX_q3aRzATekv9YZOqdybjXuw1uwLeTJF5a5zbQ9BMYjcmo9hWle93q2yWH8YzPVEbN34KpCkGiD-W9fKOuSdNck23efQ_qbWLhT3EFi2LCDhoS9HAt7YeYllZX-ai19VeL-kHt1Qt88y0ch0OVdeDWeTKqT2rAr6O7wVdVE_q_C5mh_yex18TDc-DLvy7Dw" style="width: 64px; height: 64px;" />
-            <div class="d-flex flex-column justify-content-center">
-                <span class="fw-bold small">Midnight Amber</span>
-                <span class="text-gold" style="font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em;">Más Vendido</span>
+        @forelse($cartItems as $item)
+        <div class="d-flex gap-3 p-2 rounded hover-bg-white-5 mb-3"
+            style="background: rgba(255,255,255,0.05);">
+            <img
+                src="{{ asset('storage/' . $item->options->image) }}"
+                class="rounded object-fit-cover"
+                style="width:64px; height:64px;"
+                alt="{{ $item->name }}"
+            />
+            <div class="d-flex flex-column justify-content-center flex-grow-1">
+                <span class="fw-bold small">
+                    {{ $item->name }}
+                </span>
+                <span class="text-gold small">
+                    S/. {{ number_format($item->price, 2) }}
+                </span>
+                <span class="text-variant"
+                    style="font-size:12px;">
+                    Cantidad: {{ $item->qty }}
+                </span>
             </div>
         </div>
+        @empty
+
+        <div class="text-center py-5">
+            <i class="fa-solid fa-cart-shopping fs-1 mb-3 text-secondary"></i>
+            <p class="text-variant mb-0">
+                Tu carrito está vacío
+            </p>
+        </div>
+        @endforelse
     </div>
     <div class="mt-auto pt-4 border-top border-secondary">
         <div class="d-flex justify-content-between mb-4">
             <span class="text-uppercase small tracking-widest">Subtotal</span>
-            <span class="fw-bold">$185.00</span>
+            <span class="fw-bold" id="cartSubtotal">S/. {{ $cartSubtotal }}</span>
         </div>
-        <button class="btn btn-gold w-100 py-3 fw-bold">Pagar Ahora</button>
+        <a href="{{ route('cart.index') }}"
+            class="btn btn-gold w-100 py-3 fw-bold">
+            Detalle del carrito
+        </a>
     </div>
 </aside>
+
+
+
+

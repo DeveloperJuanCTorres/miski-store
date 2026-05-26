@@ -14,385 +14,284 @@
             <div class="sticky-sidebar glass-morphism rounded-4 p-4">
                 <div class="d-flex align-items-center justify-content-between mb-4">
                     <h2 class="font-display h5 text-gold mb-0">Filtros</h2>
-                    <button class="btn btn-link text-decoration-none p-0 text-uppercase" style="font-size: 12px; color: var(--outline);">Reiniciar</button>
+                    <button id="btnResetFilters" class="btn btn-link text-decoration-none p-0 text-uppercase" style="font-size: 12px; color: var(--outline);">Reiniciar</button>
                 </div>
                 <!-- Category -->
                 <div class="mb-5">
                     <h3 class="filter-title">Categoría</h3>
+
                     <div class="d-flex flex-column gap-3">
+                        @foreach($categories as $category)
+
                         <div class="form-check">
-                            <input class="form-check-input" id="cat1" type="checkbox" />
-                            <label class="form-check-label text-variant" for="cat1">Fragancias</label>
+                            <input 
+                                class="form-check-input filter-category"
+                                type="radio"
+                                name="category"
+                                value="{{ $category->id }}"
+                                id="cat{{ $category->id }}"
+                                {{ request('category') == $category->id ? 'checked' : '' }}
+                            >
+                            <label 
+                                class="form-check-label text-variant"
+                                for="cat{{ $category->id }}"
+                            >
+                                {{ $category->name }}
+                            </label>
                         </div>
+                        @endforeach
+                    </div>
+                </div>                
+                <!-- Brands -->
+                <div class="mb-5">
+                    <h3 class="filter-title">Marcas</h3>
+
+                    <div class="d-flex flex-column gap-3">
+                        @foreach($brands as $brand)
                         <div class="form-check">
-                            <input class="form-check-input" id="cat2" type="checkbox" />
-                            <label class="form-check-label text-variant" for="cat2">Cuidado de la Piel</label>
+                            <input 
+                                class="form-check-input filter-brand"
+                                type="radio"
+                                name="brand"
+                                value="{{ $brand->id }}"
+                                id="brand{{ $brand->id }}"
+                            >
+                            <label 
+                                class="form-check-label text-variant"
+                                for="brand{{ $brand->id }}"
+                            >
+                                {{ $brand->name }}
+                            </label>
                         </div>
-                        <div class="form-check">
-                            <input class="form-check-input" id="cat3" type="checkbox" />
-                            <label class="form-check-label text-variant" for="cat3">Baño y Cuerpo</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" id="cat4" type="checkbox" />
-                            <label class="form-check-label text-variant" for="cat4">Aromas para el Hogar</label>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
                 <!-- Price Range -->
-                <div class="mb-5">
-                    <h3 class="filter-title">Categoría</h3>
-                    <input class="form-range" max="1000" min="50" type="range" />
-                    <div class="d-flex justify-content-between mt-2" style="font-size: 12px; color: var(--outline);">
+                <div class="mb-2">
+                    <h3 class="filter-title">Rango de precio</h3>
+
+                    <input 
+                        class="form-range"
+                        max="1000"
+                        min="15"
+                        value="1000"
+                        id="priceRange"
+                        type="range"
+                    />
+
+                    <div class="text-end mt-2">
+                        <span id="priceValue">
+                            S/. 1000
+                        </span>
+                    </div>
+
+                    <!-- <div class="d-flex justify-content-between mt-2" style="font-size: 12px; color: var(--outline);">
                         <span>$50</span>
                         <span>$1000+</span>
-                    </div>
-                </div>
-                <!-- Brands -->
-                <div class="mb-2">
-                    <h3 class="filter-title">Categoría</h3>
-                    <div class="d-flex flex-column gap-3">
-                        <div class="form-check">
-                            <input class="form-check-input" id="brand1" name="brand" type="radio" />
-                            <label class="form-check-label text-variant" for="brand1">Fragancias</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" id="brand2" name="brand" type="radio" />
-                            <label class="form-check-label text-variant" for="brand2">Cuidado de la Piel</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" id="brand3" name="brand" type="radio" />
-                            <label class="form-check-label text-variant" for="brand3">Baño y Cuerpo</label>
-                        </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </aside>
         <!-- Product Grid -->
         <section class="col-lg-9">
             <div class="d-flex justify-content-between align-items-center mb-4">
-                <p class="text-variant mb-0">Mostrando 24 productos</p>
+                <p class="text-variant mb-0"></p>
                 <div class="d-flex align-items-center gap-2">
                     <span class="text-uppercase" style="font-size: 12px; color: var(--outline);">Ordenar por:</span>
-                    <select class="form-select form-select-sm bg-transparent border-0 text-gold shadow-none fw-bold" style="width: auto; cursor: pointer;">
-                        <option>Destacados</option>
-                        <option>Más recientes</option>
-                        <option>Precio: Menor a Mayor</option>
-                        <option>Precio: Mayor a Menor</option>
+                    <select id="sortProducts" class="form-select form-select-sm bg-transparent border-0 text-gold shadow-none fw-bold" style="width: auto; cursor: pointer;">
+                        <option value="featured">Destacados</option>
+                        <option value="recent">Más recientes</option>
+                        <option value="price_asc">Precio: Menor a Mayor</option>
+                        <option value="price_desc">Precio: Mayor a Menor</option>
                     </select>
                 </div>
             </div>
-            <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
-                <!-- Product Card 1 -->
-                <div class="col">
-                    <div class="product-card1">
-                        <div class="product-image-wrapper">
-                            <span class="badge-luxury">Más Vendido</span>
-                            <img alt="Perfume Luxury" src="https://lh3.googleusercontent.com/aida-public/AB6AXuANqZ-aKtHHybubTZvgy10qmJbkANKsnnE9Ktm7FsErsiHDG2njBfZLs1zM0QbcPeB_XiPxQiXkHLWaxE0rNbgbnAyDlljjfZ0D4jJHd-mDDxq8nqH-4DFq6IWZObb-Ati1EeKpzxTNgsLmoMxZfqGTVROt_ryylt0tzyegRoIWLNhyz-cUmBbthFc9TtvEPjweABOriAtEIz_34u2ad-jP-fFH_nfzMsDMgxi7IJDUeSgjiHbRlvmNqQXEc-Xr4JrluR39c12-uy4" />
-                            <div class="quick-view-overlay">
-                                <button 
-                                    class="btn btn-gold"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#quickViewModal"
-                                >
-                                    Vista Rápida
-                                </button>
-                            </div>
-                        </div>
-                        <div class="card-content">
-                            <p class="text-uppercase mb-1" style="font-size: 10px; color: var(--outline); letter-spacing: 0.2em;">L'Essence de Vie</p>
-                            <h3 class="font-display h5 mb-2">Categoría</h3>
-                            <div class="d-flex align-items-center gap-2 text-gold mb-3" style="font-size: 12px;">
-                                <div class="stars">
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-regular fa-star"></i>
-                                </div>
-                                <span style="color: var(--outline);">(124)</span>
-                                <div class="ms-auto">
-                                    <i class="fa-regular fa-heart" style="color: var(--outline); cursor: pointer;"></i>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center justify-content-between">
-                                <span class="font-display h5 text-gold mb-0">Más Vendido</span>
-                                <button class="btn-cart-circle">
-                                    <i class="fa-solid fa-cart-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Product Card 2 -->
-                <div class="col">
-                    <div class="product-card1">
-                        <div class="product-image-wrapper">
-                            <img alt="Skincare Serum" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsYtiD9UF8MRUrnkriVGTC0iATJGTD81v7RyBVT0Z6Qpr2H-vP3BlYupzgU0qFMjOwDjE_55TZ3qhslJscJ4Tl7ZQMhkGqe3-lT2uSevilf2orM6WOM3nz9GPZmp7ZyTJgVsmXxkXkqH7qdC0h44dTwUcE3awM28qICNuSxpmHkBJ1k81JJUoM41abWkihC4Er1lN1f9AqYm86mHfEwBiQhL8wQbbSHoVgchhafwUJr3PWX91esvD1NDdDcQq0JDeWUcS_t184rVE" />
-                            <div class="quick-view-overlay">
-                                <button 
-                                    class="btn btn-gold"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#quickViewModal"
-                                >
-                                    Vista Rápida
-                                </button>
-                            </div>
-                        </div>
-                        <div class="card-content">
-                            <p class="text-uppercase mb-1" style="font-size: 10px; color: var(--outline); letter-spacing: 0.2em;">Aurum Botanicals</p>
-                            <h3 class="font-display h5 mb-2">Categoría</h3>
-                            <div class="d-flex align-items-center gap-2 text-gold mb-3" style="font-size: 12px;">
-                                <div class="stars">
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                </div>
-                                <span style="color: var(--outline);">(89)</span>
-                                <div class="ms-auto">
-                                    <i class="fa-regular fa-heart" style="color: var(--outline); cursor: pointer;"></i>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center justify-content-between">
-                                <span class="font-display h5 text-gold mb-0">Más Vendido</span>
-                                <button class="btn-cart-circle">
-                                    <i class="fa-solid fa-cart-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Product Card 3 -->
-                <div class="col">
-                    <div class="product-card1">
-                        <div class="product-image-wrapper">
-                            <span class="badge-luxury badge-new">Nuevo</span>
-                            <img alt="Luxury Candle" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIAJZVOvW0r-ZYoCEUXe27h5PgjSjYv49DZJbf3ydgey_RCoHZZtxBEf3-WL0D-_Bxpq0W_UuBIx7ZjW2saLHWIy7QgsrnryU4P8gLb8dheOTTPi4f3qEV-_eejqimnXu2zq6Qf8KKcqdBzaip5ovbBE3Kzb8VFVumJ_Nj24Ba6zInawkAoW36si0kzGrwEeKI2moOboFWVDN1L8ctDWg4O1_1ASRgRND2vum2fS9MD5OZ4_dnq-sE8pIxDIrnQR2vyL64fSWN1XE" />
-                            <div class="quick-view-overlay">
-                                <button 
-                                    class="btn btn-gold"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#quickViewModal"
-                                >
-                                    Vista Rápida
-                                </button>
-                            </div>
-                        </div>
-                        <div class="card-content">
-                            <p class="text-uppercase mb-1" style="font-size: 10px; color: var(--outline); letter-spacing: 0.2em;">Velvet Night</p>
-                            <h3 class="font-display h5 mb-2">Categoría</h3>
-                            <div class="d-flex align-items-center gap-2 text-gold mb-3" style="font-size: 12px;">
-                                <div class="stars">
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-regular fa-star"></i>
-                                </div>
-                                <span style="color: var(--outline);">(42)</span>
-                                <div class="ms-auto">
-                                    <i class="fa-regular fa-heart" style="color: var(--outline); cursor: pointer;"></i>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center justify-content-between">
-                                <span class="font-display h5 text-gold mb-0">Más Vendido</span>
-                                <button class="btn-cart-circle">
-                                    <i class="fa-solid fa-cart-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Pagination -->
-            <div class="mt-5 d-flex align-items-center justify-content-center gap-2">
-                <a class="page-link-custom" href="#">
-                    <i class="fa-solid fa-chevron-left"></i>
-                </a>
-                <div class="d-flex align-items-center">
-                    <a class="page-link-custom active" href="#">1</a>
-                    <a class="page-link-custom" href="#">2</a>
-                    <a class="page-link-custom" href="#">3</a>
-                    <span class="mx-2" style="color: var(--outline);">...</span>
-                    <a class="page-link-custom" href="#">12</a>
-                </div>
-                <a class="page-link-custom" href="#">
-                    <i class="fa-solid fa-chevron-right"></i>
-                </a>
+            <div id="productsContainer">
+
+                @include('partials.products-grid', ['products' => $products])
+
             </div>
         </section>
     </div>
 </div>
 
-<!-- QUICK VIEW MODAL -->
-<div class="modal fade luxury-modal" id="quickViewModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-xl">
-        <div class="modal-content border-0 overflow-hidden">
+@include('partials.moda-product')
 
-            <!-- Close -->
-            <button type="button" class="btn-close-custom" data-bs-dismiss="modal">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
+<script>
 
-            <div class="row g-0">
+    let categoryInputs;
+    let brandInputs;
+    let priceRange;
+    let priceValue;
+    let sortProducts;
+    let container;
 
-                <!-- LEFT: IMAGES -->
-                <div class="col-lg-6">
-                    <div class="luxury-gallery h-100">
+    // =========================
+    // FILTER PRODUCTS
+    // =========================
+    function filterProducts(page = 1)
+    {
+        const category = document.querySelector('.filter-category:checked')?.value || '';
 
-                        <!-- Main Image -->
-                        <div class="main-image-wrapper">
-                            <span class="badge-luxury">Más Vendido</span>
+        const brand = document.querySelector('.filter-brand:checked')?.value || '';
 
-                            <img 
-                                id="quickViewImage"
-                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuANqZ-aKtHHybubTZvgy10qmJbkANKsnnE9Ktm7FsErsiHDG2njBfZLs1zM0QbcPeB_XiPxQiXkHLWaxE0rNbgbnAyDlljjfZ0D4jJHd-mDDxq8nqH-4DFq6IWZObb-Ati1EeKpzxTNgsLmoMxZfqGTVROt_ryylt0tzyegRoIWLNhyz-cUmBbthFc9TtvEPjweABOriAtEIz_34u2ad-jP-fFH_nfzMsDMgxi7IJDUeSgjiHbRlvmNqQXEc-Xr4JrluR39c12-uy4"
-                                class="main-product-image"
-                                alt="Producto"
-                            >
+        const price = priceRange.value;
 
-                            <div class="image-overlay-gradient"></div>
-                        </div>
+        const sort = sortProducts.value;
 
-                        <!-- Thumbnails -->
-                        <div class="thumbnail-wrapper">
-                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuANqZ-aKtHHybubTZvgy10qmJbkANKsnnE9Ktm7FsErsiHDG2njBfZLs1zM0QbcPeB_XiPxQiXkHLWaxE0rNbgbnAyDlljjfZ0D4jJHd-mDDxq8nqH-4DFq6IWZObb-Ati1EeKpzxTNgsLmoMxZfqGTVROt_ryylt0tzyegRoIWLNhyz-cUmBbthFc9TtvEPjweABOriAtEIz_34u2ad-jP-fFH_nfzMsDMgxi7IJDUeSgjiHbRlvmNqQXEc-Xr4JrluR39c12-uy4" class="thumb-image active">
-                            
-                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsYtiD9UF8MRUrnkriVGTC0iATJGTD81v7RyBVT0Z6Qpr2H-vP3BlYupzgU0qFMjOwDjE_55TZ3qhslJscJ4Tl7ZQMhkGqe3-lT2uSevilf2orM6WOM3nz9GPZmp7ZyTJgVsmXxkXkqH7qdC0h44dTwUcE3awM28qICNuSxpmHkBJ1k81JJUoM41abWkihC4Er1lN1f9AqYm86mHfEwBiQhL8wQbbSHoVgchhafwUJr3PWX91esvD1NDdDcQq0JDeWUcS_t184rVE" class="thumb-image">
+        fetch(`/store/filter?page=${page}&category=${category}&brand=${brand}&price=${price}&sort=${sort}`)
 
-                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIAJZVOvW0r-ZYoCEUXe27h5PgjSjYv49DZJbf3ydgey_RCoHZZtxBEf3-WL0D-_Bxpq0W_UuBIx7ZjW2saLHWIy7QgsrnryU4P8gLb8dheOTTPi4f3qEV-_eejqimnXu2zq6Qf8KKcqdBzaip5ovbBE3Kzb8VFVumJ_Nj24Ba6zInawkAoW36si0kzGrwEeKI2moOboFWVDN1L8ctDWg4O1_1ASRgRND2vum2fS9MD5OZ4_dnq-sE8pIxDIrnQR2vyL64fSWN1XE" class="thumb-image">
-                        </div>
+        .then(response => response.text())
 
-                    </div>
-                </div>
+        .then(html => {
 
-                <!-- RIGHT: CONTENT -->
-                <div class="col-lg-6">
-                    <div class="luxury-content">
+            container.innerHTML = html;
 
-                        <!-- Brand -->
-                        <div class="d-flex align-items-center justify-content-between mb-3">
-                            <span class="product-brand">
-                                Categoría
-                            </span>
+            window.scrollTo({
+                top: container.offsetTop - 120,
+                behavior: 'smooth'
+            });
 
-                            <!-- <button class="btn-wishlist">
-                                <i class="fa-regular fa-heart"></i>
-                            </button> -->
-                        </div>
+        });
+    }
 
-                        <!-- Title -->
-                        <h2 class="product-title">
-                            Perfume Imperial Noir
-                        </h2>
+    document.addEventListener('DOMContentLoaded', function(){
 
-                        <!-- Rating -->
-                        <div class="d-flex align-items-center gap-3 mb-4">
-                            <div class="stars text-gold">
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star-half-stroke"></i>
-                            </div>
+        categoryInputs = document.querySelectorAll('.filter-category');
 
-                            <span class="reviews-count">
-                                124 reseñas
-                            </span>
-                        </div>
+        brandInputs = document.querySelectorAll('.filter-brand');
 
-                        <!-- Price -->
-                        <div class="price-wrapper mb-4">
-                            <span class="current-price">
-                                S/ 289.90
-                            </span>
+        priceRange = document.getElementById('priceRange');
 
-                            <span class="old-price">
-                                S/ 349.90
-                            </span>
+        priceValue = document.getElementById('priceValue');
 
-                            <span class="discount-badge">
-                                -20%
-                            </span>
-                        </div>
+        sortProducts = document.getElementById('sortProducts');
 
-                        <!-- Description -->
-                        <p class="product-description">
-                            Una fragancia sofisticada y envolvente con notas amaderadas, ámbar cálido y esencia floral premium. Diseñada para quienes buscan exclusividad y presencia inolvidable.
-                        </p>
+        container = document.getElementById('productsContainer');
 
-                        <!-- Features -->
-                        <div class="product-features">
+        // =========================
+        // CATEGORY
+        // =========================
+        categoryInputs.forEach(input => {
 
-                            <div class="feature-item">
-                                <i class="fa-solid fa-check"></i>
-                                <span>Producto 100% original</span>
-                            </div>
+            input.addEventListener('change', () => {
 
-                            <div class="feature-item">
-                                <i class="fa-solid fa-truck-fast"></i>
-                                <span>Envíos rápidos a todo el país</span>
-                            </div>
+                filterProducts();
 
-                            <div class="feature-item">
-                                <i class="fa-solid fa-shield-heart"></i>
-                                <span>Garantía de satisfacción</span>
-                            </div>
+            });
 
-                        </div>
+        });
 
-                        <!-- Quantity -->
-                        <div class="quantity-section">
+        // =========================
+        // BRAND
+        // =========================
+        brandInputs.forEach(input => {
 
-                            <span class="quantity-label">
-                                Cantidad
-                            </span>
+            input.addEventListener('change', () => {
 
-                            <div class="quantity-box">
-                                <button>-</button>
-                                <input type="text" value="1">
-                                <button>+</button>
-                            </div>
+                filterProducts();
 
-                        </div>
+            });
 
-                        <!-- Buttons -->
-                        <div class="action-buttons">
+        });
 
-                            <button class="btn-luxury-primary w-100">
-                                <i class="fa-solid fa-cart-shopping me-2"></i>
-                                Agregar al carrito
-                            </button>
+        // =========================
+        // PRICE RANGE
+        // =========================
+        let priceTimer;
 
-                            <!-- <button class="btn-luxury-secondary">
-                                Comprar ahora
-                            </button> -->
+        priceRange.addEventListener('input', function(){
 
-                        </div>
+            priceValue.innerText = 'S/. ' + this.value;
 
-                        <!-- Footer Info -->
-                        <!-- <div class="product-meta">
+            clearTimeout(priceTimer);
 
-                            <div>
-                                <span>SKU:</span>
-                                <strong>PRF-00921</strong>
-                            </div>
+            priceTimer = setTimeout(() => {
 
-                            <div>
-                                <span>Categoría:</span>
-                                <strong>Perfumes Premium</strong>
-                            </div>
+                filterProducts();
 
-                        </div> -->
+            }, 500);
 
-                    </div>
-                </div>
+        });
 
-            </div>
-        </div>
-    </div>
-</div>
+        // =========================
+        // SORT
+        // =========================
+        sortProducts.addEventListener('change', () => {
+
+            filterProducts();
+
+        });
+
+        // =========================
+        // RESET FILTERS
+        // =========================
+        const btnResetFilters = document.getElementById('btnResetFilters');
+
+        btnResetFilters.addEventListener('click', function(){
+
+            // CATEGORY
+            document.querySelectorAll('.filter-category').forEach(el => {
+                el.checked = false;
+            });
+
+            // BRAND
+            document.querySelectorAll('.filter-brand').forEach(el => {
+                el.checked = false;
+            });
+
+            // PRICE
+            priceRange.value = priceRange.max;
+
+            priceValue.innerText = 'S/. ' + priceRange.max;
+
+            // SORT
+            sortProducts.value = 'featured';
+
+            // RELOAD
+            filterProducts();
+
+        });
+
+        // AUTO FILTRAR SI VIENE UNA CATEGORÍA
+        const selectedCategory = document.querySelector('.filter-category:checked');
+
+        if(selectedCategory)
+        {
+            filterProducts();
+
+            // LIMPIA ?category= DE LA URL
+            window.history.replaceState(
+                {},
+                document.title,
+                window.location.pathname
+            );
+        }
+
+    });
+
+    // =========================
+    // PAGINATION AJAX
+    // =========================
+    document.addEventListener('click', function(e){
+
+        const link = e.target.closest('.pagination a');
+
+        if(link)
+        {
+            e.preventDefault();
+
+            const url = link.getAttribute('href');
+
+            const page = new URL(url).searchParams.get('page');
+
+            filterProducts(page);
+        }
+
+    });
+
+</script>
+
 
 @endsection
 
