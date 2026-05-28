@@ -3,6 +3,7 @@
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\StoreController;
 use Illuminate\Support\Facades\Route;
@@ -34,6 +35,9 @@ Route::get('/checkout', [CartController::class, 'checkout'])->name('cart.checkou
 Route::delete('/cart/remove/{rowId}', [CartController::class, 'remove'])->name('cart.remove');
 Route::post('/cart/update', [CartController::class, 'update'])->name('cart.update');
 Route::post('/cart/remove', [CartController::class, 'destroy'])->name('cart.remove');
+
+Route::post('/checkout/pedido', [PedidoController::class, 'pedido'])
+    ->name('checkout.pedido');
 
 
 Route::group(['prefix' => 'admin'], function () {

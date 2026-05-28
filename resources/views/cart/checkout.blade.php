@@ -4,179 +4,193 @@
 
 <div class="container py-5 mt-5">
     <div class="row g-4 mt-4">
-        <!-- Left Column -->
-        <div class="col-lg-8">
-            <!-- Customer Information -->
-            <section class="glass-panel p-4 mb-4">
-                <div class="d-flex justify-content-between align-items-center mb-4">
-                    <h2 class="font-display h5 mb-0">Datos del Cliente</h2>
-                    <span class="text-on-surface-variant small text-uppercase fw-semibold" style="font-size: 10px; letter-spacing: 0.1em;">Paso 1 de 3</span>
-                </div>
-                <div class="row g-3">
-                    <div class="col-md-6">
-                        <label class="form-label-custom">Nombre</label>
-                        <input class="form-control form-control-custom" placeholder="Julian" type="text" />
-                    </div>
-                    <div class="col-md-6">
-                        <label class="form-label-custom">Apellido</label>
-                        <input class="form-control form-control-custom" placeholder="Arango" type="text" />
-                    </div>
-                    <div class="col-12">
-                        <label class="form-label-custom">Correo Electrónico</label>
-                        <input class="form-control form-control-custom" placeholder="j.arango@ejemplo.com" type="email" />
-                    </div>
-                </div>
-            </section>
-            <!-- Shipping Address -->
-            <section class="glass-panel p-4 mb-4">
-                <h2 class="font-display h5 mb-4">Dirección de Envío</h2>
-                <div class="row g-3">
-                    <div class="col-12">
-                        <label class="form-label-custom">Dirección</label>
-                        <input class="form-control form-control-custom" placeholder="Calle Lujo 123, Suite 400" type="text" />
-                    </div>
-                    <div class="col-md-6">
-                        <label class="form-label-custom">Ciudad</label>
-                        <input class="form-control form-control-custom" placeholder="Madrid" type="text" />
-                    </div>
-                    <div class="col-md-4">
-                        <label class="form-label-custom">País</label>
-                        <select class="form-select form-control-custom">
-                            <option>Perú</option>
-                            <!-- <option>Francia</option>
-                            <option>Italia</option> -->
-                        </select>
-                    </div>
-                    <div class="col-md-2">
-                        <label class="form-label-custom">C.P.</label>
-                        <input class="form-control form-control-custom" placeholder="28001" type="text" />
-                    </div>
-                </div>
-            </section>
-            
-            <!-- Payment Methods -->
-            <section class="glass-panel p-4 mb-4">
-                <h2 class="font-display h5 mb-4">Método de Pago</h2>
+        <!-- Left Column -->         
+            <div class="col-lg-8">
+                <form
+                id="checkoutForm"
+                action="{{ route('checkout.pedido') }}"
+                enctype="multipart/form-data"
+                method="POST"
+                class="space-y-12"
+            >
+                @csrf
+                    <!-- Customer Information -->
+                    <section class="glass-panel p-4 mb-4">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <h2 class="font-display h5 mb-0">Datos del Cliente</h2>
+                            <span class="text-on-surface-variant small text-uppercase fw-semibold" style="font-size: 10px; letter-spacing: 0.1em;">Paso 1 de 3</span>
+                        </div>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label-custom">Nombres</label>
+                                <input id="nombres" name="nombres" class="form-control form-control-custom" placeholder="Julian" type="text" />
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label-custom">Apellido</label>
+                                <input id="apellidos" name="apellidos" class="form-control form-control-custom" placeholder="Arango" type="text" />
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label-custom">Correo Electrónico</label>
+                                <input id="email" name="email" class="form-control form-control-custom" placeholder="j.arango@ejemplo.com" type="email" />
+                            </div>
+                        </div>
+                    </section>
+                    <!-- Shipping Address -->
+                    <section class="glass-panel p-4 mb-4">
+                        <h2 class="font-display h5 mb-4">Dirección de Envío</h2>
+                        <div class="row g-3">
+                            <div class="col-12">
+                                <label class="form-label-custom">Dirección</label>
+                                <input id="direccion" name="direccion" class="form-control form-control-custom" placeholder="Calle Lujo 123, Suite 400" type="text" />
+                            </div>
+                            
 
-                <div class="d-flex flex-column gap-3">
+                            <div class="col-md-4">
+                                <label class="form-label-custom">Departamento</label>
+                                <select id="departamento" class="form-select form-control-custom departamento" name="departamento">    
+                                    <option data-id="" value="">-Seleccionar-</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label-custom">Provincia</label>
+                                <select id="provincia" class="form-select form-control-custom provincia" name="provincia">
+                                    <option data-id="" value="Chachapoyas">-Seleccionar-</option>                
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label-custom">Distrito</label>
+                                <select id="distrito" class="form-select form-control-custom distrito" name="distrito">
+                                    <option data-id="" value="">-Seleccionar-</option>
+                                </select>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- Payment Methods -->
+                    <section class="glass-panel p-4 mb-4">
+                        <h2 class="font-display h5 mb-4">Método de Pago</h2>
 
-                    <!-- Yape -->
-                    <label class="payment-option active" id="yapeOption">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="d-flex align-items-center gap-3">
-                                <input checked
-                                    class="form-check-input mt-0 payment-radio"
-                                    name="payment_method"
-                                    type="radio"
-                                    value="yape">
+                        <div class="d-flex flex-column gap-3">
 
-                                <div class="payment-logo yape">
-                                    Y
+                            <!-- Yape -->
+                            <label class="payment-option active" id="yapeOption">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center gap-3">
+                                        <input checked
+                                            class="form-check-input mt-0 payment-radio"
+                                            name="payment_method"
+                                            type="radio"
+                                            value="yape">
+
+                                        <div class="payment-logo yape">
+                                            Y
+                                        </div>
+
+                                        <div>
+                                            <div class="fw-bold">Yape</div>
+                                            <div class="text-on-surface-variant small">
+                                                Escanea el QR y adjunta tu comprobante
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <i class="fa-solid fa-circle-check text-primary-gold"></i>
                                 </div>
+                            </label>
 
-                                <div>
-                                    <div class="fw-bold">Yape</div>
+                            <!-- QR YAPE -->
+                            <div class="qr-container" id="yapeQR">
+                                <img src="{{ asset('images/payments/yape-qr.png') }}"
+                                    class="img-fluid qr-image"
+                                    alt="QR Yape">
+
+                                <div class="small text-center text-on-surface-variant mt-3">
+                                    Número asociado: <strong>999 999 999</strong>
+                                </div>
+                            </div>
+
+                            <!-- Plin -->
+                            <label class="payment-option" id="plinOption">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center gap-3">
+                                        <input class="form-check-input mt-0 payment-radio"
+                                            name="payment_method"
+                                            type="radio"
+                                            value="plin">
+
+                                        <div class="payment-logo plin">
+                                            P
+                                        </div>
+
+                                        <div>
+                                            <div class="fw-bold">Plin</div>
+                                            <div class="text-on-surface-variant small">
+                                                Pago inmediato desde bancos afiliados
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <i class="fa-solid fa-mobile-screen-button text-primary-gold"></i>
+                                </div>
+                            </label>
+
+                            <!-- QR PLIN -->
+                            <div class="qr-container d-none" id="plinQR">
+                                <img src="{{ asset('images/payments/plin-qr.png') }}"
+                                    class="img-fluid qr-image"
+                                    alt="QR Plin">
+
+                                <div class="small text-center text-on-surface-variant mt-3">
+                                    Número asociado: <strong>999 999 999</strong>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- Upload Voucher -->
+                        <div class="mt-4">
+
+                            <label class="form-label-custom mb-3">
+                                Adjuntar Comprobante
+                            </label>
+
+                            <div class="upload-area">
+
+                                <input type="file"
+                                    name="comprobante"
+                                    id="paymentProof"
+                                    accept="image/*,.pdf"
+                                    class="upload-input">
+
+                                <div class="upload-content">
+                                    <i class="fa-solid fa-cloud-arrow-up upload-icon"></i>
+
+                                    <div class="fw-bold mb-2">
+                                        Subir comprobante de pago
+                                    </div>
+
                                     <div class="text-on-surface-variant small">
-                                        Escanea el QR y adjunta tu comprobante
+                                        JPG, PNG, JPEG o PDF
                                     </div>
                                 </div>
+
                             </div>
 
-                            <i class="fa-solid fa-circle-check text-primary-gold"></i>
-                        </div>
-                    </label>
+                            <div id="fileName"
+                                class="small text-primary-gold mt-3 d-none"></div>
 
-                    <!-- QR YAPE -->
-                    <div class="qr-container" id="yapeQR">
-                        <img src="{{ asset('images/payments/yape-qr.png') }}"
-                            class="img-fluid qr-image"
-                            alt="QR Yape">
-
-                        <div class="small text-center text-on-surface-variant mt-3">
-                            Número asociado: <strong>999 999 999</strong>
                         </div>
+                    </section>
+
+                    <div class="d-flex justify-content-between align-items-center mt-4">
+                        <button class="btn btn-link text-decoration-none text-primary-gold fw-semibold p-0" style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em;">
+                            <i class="fa-solid fa-arrow-left me-2"></i> Volver al Carrito
+                        </button>
+                        <button id="btnEnviarPedido" type="submit" class="btn btn-gold">Enviar pedido</button>
                     </div>
-
-                    <!-- Plin -->
-                    <label class="payment-option" id="plinOption">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="d-flex align-items-center gap-3">
-                                <input class="form-check-input mt-0 payment-radio"
-                                    name="payment_method"
-                                    type="radio"
-                                    value="plin">
-
-                                <div class="payment-logo plin">
-                                    P
-                                </div>
-
-                                <div>
-                                    <div class="fw-bold">Plin</div>
-                                    <div class="text-on-surface-variant small">
-                                        Pago inmediato desde bancos afiliados
-                                    </div>
-                                </div>
-                            </div>
-
-                            <i class="fa-solid fa-mobile-screen-button text-primary-gold"></i>
-                        </div>
-                    </label>
-
-                    <!-- QR PLIN -->
-                    <div class="qr-container d-none" id="plinQR">
-                        <img src="{{ asset('images/payments/plin-qr.png') }}"
-                            class="img-fluid qr-image"
-                            alt="QR Plin">
-
-                        <div class="small text-center text-on-surface-variant mt-3">
-                            Número asociado: <strong>999 999 999</strong>
-                        </div>
-                    </div>
-
-                </div>
-
-                <!-- Upload Voucher -->
-                <div class="mt-4">
-
-                    <label class="form-label-custom mb-3">
-                        Adjuntar Comprobante
-                    </label>
-
-                    <div class="upload-area">
-
-                        <input type="file"
-                            name="payment_proof"
-                            id="paymentProof"
-                            accept="image/*,.pdf"
-                            class="upload-input">
-
-                        <div class="upload-content">
-                            <i class="fa-solid fa-cloud-arrow-up upload-icon"></i>
-
-                            <div class="fw-bold mb-2">
-                                Subir comprobante de pago
-                            </div>
-
-                            <div class="text-on-surface-variant small">
-                                JPG, PNG, JPEG o PDF
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div id="fileName"
-                        class="small text-primary-gold mt-3 d-none"></div>
-
-                </div>
-            </section>
-
-            <div class="d-flex justify-content-between align-items-center mt-4">
-                <button class="btn btn-link text-decoration-none text-primary-gold fw-semibold p-0" style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em;">
-                    <i class="fa-solid fa-arrow-left me-2"></i> Volver al Carrito
-                </button>
-                <button class="btn btn-gold">Continuar al Pago</button>
+                </form>
             </div>
-        </div>
+        
         <!-- Right Column -->
         <div class="col-lg-4">
             <div class="sticky-top" style="top: 100px;">
@@ -245,62 +259,118 @@
 </div>
 
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script>
 
-document.addEventListener('DOMContentLoaded', function(){
+    document.addEventListener('DOMContentLoaded', function(){
 
-    const radios = document.querySelectorAll('.payment-radio');
+        const radios = document.querySelectorAll('.payment-radio');
 
-    const yapeQR = document.getElementById('yapeQR');
-    const plinQR = document.getElementById('plinQR');
+        const yapeQR = document.getElementById('yapeQR');
+        const plinQR = document.getElementById('plinQR');
 
-    const yapeOption = document.getElementById('yapeOption');
-    const plinOption = document.getElementById('plinOption');
+        const yapeOption = document.getElementById('yapeOption');
+        const plinOption = document.getElementById('plinOption');
 
-    radios.forEach(radio => {
+        radios.forEach(radio => {
 
-        radio.addEventListener('change', function(){
+            radio.addEventListener('change', function(){
 
-            if(this.value === 'yape'){
+                if(this.value === 'yape'){
 
-                yapeQR.classList.remove('d-none');
-                plinQR.classList.add('d-none');
+                    yapeQR.classList.remove('d-none');
+                    plinQR.classList.add('d-none');
 
-                yapeOption.classList.add('active');
-                plinOption.classList.remove('active');
+                    yapeOption.classList.add('active');
+                    plinOption.classList.remove('active');
 
-            }else{
+                }else{
 
-                plinQR.classList.remove('d-none');
-                yapeQR.classList.add('d-none');
+                    plinQR.classList.remove('d-none');
+                    yapeQR.classList.add('d-none');
 
-                plinOption.classList.add('active');
-                yapeOption.classList.remove('active');
+                    plinOption.classList.add('active');
+                    yapeOption.classList.remove('active');
+                }
+
+            });
+
+        });
+
+        // Nombre archivo
+        const inputFile = document.getElementById('paymentProof');
+        const fileName = document.getElementById('fileName');
+
+        inputFile.addEventListener('change', function(){
+
+            if(this.files.length > 0){
+
+                fileName.classList.remove('d-none');
+
+                fileName.innerHTML =
+                    `<i class="fa-solid fa-file-circle-check me-2"></i>
+                    ${this.files[0].name}`;
             }
 
         });
 
     });
 
-    // Nombre archivo
-    const inputFile = document.getElementById('paymentProof');
-    const fileName = document.getElementById('fileName');
+</script>
 
-    inputFile.addEventListener('change', function(){
+<script>
 
-        if(this.files.length > 0){
+    document.addEventListener('DOMContentLoaded', function () {
 
-            fileName.classList.remove('d-none');
+        const form = document.getElementById('checkoutForm');
+        const btn = document.getElementById('btnEnviarPedido');
 
-            fileName.innerHTML =
-                `<i class="fa-solid fa-file-circle-check me-2"></i>
-                 ${this.files[0].name}`;
-        }
+        form.addEventListener('submit', function () {
+
+            btn.disabled = true;
+
+            btn.innerHTML = `
+                <div class="flex items-center justify-center gap-3">
+                    <svg class="animate-spin h-5 w-5 text-white"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24">
+
+                        <circle
+                            class="opacity-25"
+                            cx="12"
+                            cy="12"
+                            r="10"
+                            stroke="currentColor"
+                            stroke-width="4">
+                        </circle>
+
+                        <path
+                            class="opacity-75"
+                            fill="currentColor"
+                            d="M4 12a8 8 0 018-8v8z">
+                        </path>
+
+                    </svg>
+
+                    Procesando...
+                </div>
+            `;
+
+            Swal.fire({
+                title: 'Procesando pedido',
+                text: 'Espere un momento por favor...',
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                didOpen: () => {
+                    Swal.showLoading();
+                }
+            });
+
+        });
 
     });
-
-});
-
+    
 </script>
 @endsection
 
