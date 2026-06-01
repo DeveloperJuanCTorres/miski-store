@@ -162,11 +162,11 @@
 
             <div class="modal-body">
 
-                <div class="service-banner mb-4">
+                <!-- <div class="service-banner mb-4">
                     <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=1600&auto=format&fit=crop"
                          class="img-fluid rounded-4"
                          alt="">
-                </div>
+                </div> -->
 
                 <div class="row g-4">
 
