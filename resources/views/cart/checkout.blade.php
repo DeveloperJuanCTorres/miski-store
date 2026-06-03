@@ -72,8 +72,9 @@
 
                         <div class="d-flex flex-column gap-3">
 
+                            @if($company->yape)
                             <!-- Yape -->
-                            <label class="payment-option active" id="yapeOption">
+                            <label class="payment-option" id="yapeOption">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="d-flex align-items-center gap-3">
                                         <input checked
@@ -100,15 +101,17 @@
 
                             <!-- QR YAPE -->
                             <div class="qr-container" id="yapeQR">
-                                <img src="{{ asset('images/payments/yape-qr.png') }}"
+                                <img src="{{ asset('storage/' .$company->yape) }}"
                                     class="img-fluid qr-image"
                                     alt="QR Yape">
 
                                 <div class="small text-center text-on-surface-variant mt-3">
-                                    Número asociado: <strong>999 999 999</strong>
+                                    Número asociado: <strong>{{$company->telefono}}</strong>
                                 </div>
                             </div>
+                            @endif
 
+                            @if($company->plin)
                             <!-- Plin -->
                             <label class="payment-option" id="plinOption">
                                 <div class="d-flex justify-content-between align-items-center">
@@ -136,14 +139,15 @@
 
                             <!-- QR PLIN -->
                             <div class="qr-container d-none" id="plinQR">
-                                <img src="{{ asset('images/payments/plin-qr.png') }}"
+                                <img src="{{ asset('storage/' .$company->plin) }}"
                                     class="img-fluid qr-image"
                                     alt="QR Plin">
 
                                 <div class="small text-center text-on-surface-variant mt-3">
-                                    Número asociado: <strong>999 999 999</strong>
+                                    Número asociado: <strong>{{$company->telefono}}</strong>
                                 </div>
                             </div>
+                            @endif
 
                         </div>
 

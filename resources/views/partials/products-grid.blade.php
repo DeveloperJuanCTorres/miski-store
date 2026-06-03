@@ -26,7 +26,7 @@
                     </button>
                 </div>
             </div>
-            <div class="card-content">
+            <div class="card-content text-center">
                 <p class="text-uppercase mb-1" style="font-size: 10px; color: var(--outline); letter-spacing: 0.2em;">{{ $product->taxonomy->name ?? 'Categoría' }}</p>
                 <h3 class="font-display h5 mb-2">{{ $product->name }}</h3>
                 <div class="d-flex align-items-center gap-2 text-gold mb-3" style="font-size: 12px;">
