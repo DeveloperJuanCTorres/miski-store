@@ -83,6 +83,7 @@
             <div class="search-container">
 
                 <input
+                     id="searchProduct"
                     class="form-control search-input"
                     placeholder="Buscar productos..."
                     type="text" />
@@ -139,7 +140,7 @@
 
             <i class="fa-solid fa-magnifying-glass"></i>
 
-            <input type="text"
+            <input type="text"  id="searchProduct"
                    placeholder="Buscar productos...">
 
         </div>

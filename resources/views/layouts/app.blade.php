@@ -98,6 +98,34 @@
 
     @endif
 
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function(){
+
+            const searchInput = document.getElementById('searchProduct');
+
+            if(searchInput)
+            {
+                searchInput.addEventListener('keypress', function(e){
+
+                    if(e.key === 'Enter')
+                    {
+                        const text = this.value.trim();
+
+                        if(text !== '')
+                        {
+                            window.location.href =
+                                "{{ route('tienda') }}?search=" +
+                                encodeURIComponent(text);
+                        }
+                    }
+
+                });
+            }
+
+        });
+    </script>
+
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>

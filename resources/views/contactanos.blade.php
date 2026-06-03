@@ -27,7 +27,7 @@
                         <div class="icon-box"><i class="fas fa-location-dot"></i></div>
                         <h3 class="card-title-custom">Ubicación</h3>
                         <p class="text-on-surface-variant mb-0">
-                            Av. del Lujo 450, Distrito Boutique<br />Lima, Perú
+                            {{$company->direccion}}
                         </p>
                     </div>
                     <!-- Phone -->
@@ -35,7 +35,7 @@
                         <div class="icon-box"><i class="fas fa-phone"></i></div>
                         <h3 class="card-title-custom">Teléfono</h3>
                         <p class="text-on-surface-variant mb-0">
-                            Asesoría: +51 1 234 5678<br />WhatsApp: +51 987 654 321
+                            Asesoría: {{$company->telefono}}<br />WhatsApp: {{$company->whatsapp}}
                         </p>
                     </div>
                     <!-- Hours -->
@@ -43,7 +43,8 @@
                         <div class="icon-box"><i class="fas fa-clock"></i></div>
                         <h3 class="card-title-custom">Horarios</h3>
                         <p class="text-on-surface-variant mb-0">
-                            Lun - Sáb: 10:00 - 20:00<br />Dom: 11:00 - 18:00
+                            24/7
+                            <!-- Lun - Sáb: 10:00 - 20:00<br />Dom: 11:00 - 18:00 -->
                         </p>
                     </div>
                 </div>

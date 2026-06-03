@@ -139,7 +139,16 @@
 
         const sort = sortProducts.value;
 
-        fetch(`/store/filter?page=${page}&category=${category}&brand=${brand}&price=${price}&sort=${sort}`)
+        const search =
+            new URLSearchParams(window.location.search)
+            .get('search') || '';
+
+        
+        fetch(
+            `/store/filter?page=${page}&category=${category}&brand=${brand}&price=${price}&sort=${sort}&search=${encodeURIComponent(search)}`
+        )
+
+        // fetch(`/store/filter?page=${page}&category=${category}&brand=${brand}&price=${price}&sort=${sort}`)
 
         .then(response => response.text())
 
@@ -230,25 +239,26 @@
 
         btnResetFilters.addEventListener('click', function(){
 
-            // CATEGORY
             document.querySelectorAll('.filter-category').forEach(el => {
                 el.checked = false;
             });
 
-            // BRAND
             document.querySelectorAll('.filter-brand').forEach(el => {
                 el.checked = false;
             });
 
-            // PRICE
             priceRange.value = priceRange.max;
-
             priceValue.innerText = 'S/. ' + priceRange.max;
 
-            // SORT
             sortProducts.value = 'featured';
 
-            // RELOAD
+            // LIMPIAR URL
+            window.history.replaceState(
+                {},
+                document.title,
+                window.location.pathname
+            );
+
             filterProducts();
 
         });
