@@ -22,6 +22,7 @@ class Order extends Model
         'referencia',
         'pdf',
         'comprobante',
-        'total'
+        'total',
+        'entrega'
     ];
 }

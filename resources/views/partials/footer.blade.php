@@ -115,7 +115,7 @@
             <div class="col-lg-4">
 
                 <h6 class="footer-title mb-3">
-                    SUSCRÍBETE AL NEWSLETTER
+                    SUSCRÍBETE
                 </h6>
 
                 <p class="text-footer small mb-4">

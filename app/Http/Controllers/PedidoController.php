@@ -59,7 +59,8 @@ class PedidoController extends Controller
                 'distrito' => $request->distrito,
                 'referencia' => $request->referencia,
                 'comprobante' => $comprobantePath,
-                'total' => $total
+                'total' => $total,
+                'entrega' => $request->delivery_type
             ]);
 
             /*

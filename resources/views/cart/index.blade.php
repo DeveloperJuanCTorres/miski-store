@@ -11,9 +11,7 @@
 
     .text-on-surface-variant {
         color: var(--on-surface-variant) !important;
-    }
-
-   
+    }   
 
     /* Product Cards */
     .product-card-cart {
@@ -128,6 +126,7 @@
         border-radius: 0 0.5rem 0.5rem 0;
         padding: 0 1rem;
     }
+    
 </style>
 @section('content')
 
@@ -219,48 +218,30 @@
                 </h2>
 
                 <div class="d-flex flex-column gap-3 mb-4">
-
                     <div class="d-flex justify-content-between text-on-surface-variant">
-
                         <span>Subtotal</span>
-
                         <span id="cartSubtotalPage">
-
                             S/. {{ Cart::subtotal() }}
-
                         </span>
-
                     </div>
 
-                    <div class="d-flex justify-content-between text-on-surface-variant">
+                    <!-- <hr class="my-2 border-secondary opacity-25" /> -->
 
-                        <span>Envío</span>
-
-                        <span class="text-primary-gold">
-                            Gratis
-                        </span>
-
-                    </div>
+                    
 
                     <hr class="my-2 border-secondary opacity-25" />
 
                     <div class="d-flex justify-content-between align-items-end">
-
                         <span class="h5 fw-bold text-uppercase mb-1">
                             Total
                         </span>
 
                         <div class="text-end">
-
                             <span class="d-block text-primary-gold h3 fw-bold mb-0"
                                 id="cartTotalPage">
-
                                 S/. {{ Cart::subtotal() }}
-
                             </span>
-
                         </div>
-
                     </div>
 
                 </div>

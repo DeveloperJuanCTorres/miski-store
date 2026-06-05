@@ -72,7 +72,9 @@
                             <select class="form-select form-control-custom">
                                 <option>Asesoría en Fragancias</option>
                                 <option>Estado de Pedido</option>
-                                <option>Eventos Exclusivos</option>
+                                <option>Preventas</option>
+                                <option>Liquidaciones</option>
+                                <option>Precio mayorista</option>
                                 <option>Otros</option>
                             </select>
                         </div>

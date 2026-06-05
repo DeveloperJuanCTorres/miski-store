@@ -99,7 +99,7 @@
     @endif
 
 
-    <script>
+    <!-- <script>
         document.addEventListener('DOMContentLoaded', function(){
 
             const searchInput = document.getElementById('searchProduct');
@@ -119,6 +119,78 @@
                                 encodeURIComponent(text);
                         }
                     }
+
+                });
+            }
+
+        });
+    </script> -->
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function(){
+
+            function buscarProducto(inputId)
+            {
+                const input = document.getElementById(inputId);
+
+                if(!input) return;
+
+                const text = input.value.trim();
+
+                if(text !== '')
+                {
+                    window.location.href =
+                        "{{ route('tienda') }}?search=" +
+                        encodeURIComponent(text);
+                }
+            }
+
+            // Desktop
+            const searchDesktop = document.getElementById('searchProductDesktop');
+            const btnDesktop = document.getElementById('btnSearchDesktop');
+
+            if(searchDesktop)
+            {
+                searchDesktop.addEventListener('keypress', function(e){
+
+                    if(e.key === 'Enter')
+                    {
+                        buscarProducto('searchProductDesktop');
+                    }
+
+                });
+            }
+
+            if(btnDesktop)
+            {
+                btnDesktop.addEventListener('click', function(){
+
+                    buscarProducto('searchProductDesktop');
+
+                });
+            }
+
+            // Mobile
+            const searchMobile = document.getElementById('searchProductMobile');
+            const btnMobile = document.getElementById('btnSearchMobile');
+
+            if(searchMobile)
+            {
+                searchMobile.addEventListener('keypress', function(e){
+
+                    if(e.key === 'Enter')
+                    {
+                        buscarProducto('searchProductMobile');
+                    }
+
+                });
+            }
+
+            if(btnMobile)
+            {
+                btnMobile.addEventListener('click', function(){
+
+                    buscarProducto('searchProductMobile');
 
                 });
             }

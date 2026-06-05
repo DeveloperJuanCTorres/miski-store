@@ -1,3 +1,45 @@
+<style>
+    .search-container{
+        position: relative;
+    }
+
+    .search-btn{
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: transparent;
+        border: none;
+        color: #999;
+        padding: 0;
+        cursor: pointer;
+        z-index: 2;
+    }
+
+    .search-input{
+        padding-right: 45px;
+    }
+
+    .mobile-search{
+        position: relative;
+    }
+
+    .mobile-search .search-btn{
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: transparent;
+        border: none;
+        color: #999;
+        padding: 0;
+        z-index: 2;
+    }
+
+    .mobile-search input{
+        padding-left: 60px;
+    }
+</style>
 @php
     $route = Route::currentRouteName();
 @endphp
@@ -83,12 +125,14 @@
             <div class="search-container">
 
                 <input
-                     id="searchProduct"
+                    id="searchProductDesktop"
                     class="form-control search-input"
                     placeholder="Buscar productos..."
                     type="text" />
 
-                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                <button type="button" id="btnSearchDesktop" class="search-btn">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
 
             </div>
 
@@ -138,10 +182,16 @@
         <!-- SEARCH -->
         <div class="mobile-search mb-4">
 
-            <i class="fa-solid fa-magnifying-glass"></i>
+            <button type="button" id="btnSearchMobile" class="search-btn">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
 
-            <input type="text"  id="searchProduct"
-                   placeholder="Buscar productos...">
+            <input
+                type="text"
+                id="searchProductMobile"
+                placeholder="Buscar productos...">
+            
+            
 
         </div>
 
@@ -294,6 +344,8 @@
         </a>
     </div>
 </aside>
+
+
 
 
 

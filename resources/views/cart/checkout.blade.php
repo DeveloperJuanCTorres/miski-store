@@ -1,19 +1,46 @@
 @extends('layouts.app')
+<style>
+    .delivery-card{
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        padding:16px 18px;
+        border:2px solid rgba(255,255,255,.08);
+        border-radius:16px;
+        cursor:pointer;
+        transition:all .25s ease;
+        background:rgba(255,255,255,.03);
+    }
 
+    .delivery-card:hover{
+        border-color:#d4af37;
+        transform:translateY(-2px);
+    }
+
+    .btn-check:checked + .delivery-card{
+        border-color:#d4af37;
+        background:rgba(212,175,55,.08);
+        box-shadow:0 0 0 3px rgba(212,175,55,.15);
+    }
+
+    .delivery-card .fw-bold{
+        margin-bottom:2px;
+    }
+</style>
 @section('content')
 
 <div class="container py-5 mt-5">
-    <div class="row g-4 mt-4">
-        <!-- Left Column -->         
-            <div class="col-lg-8">
-                <form
-                id="checkoutForm"
-                action="{{ route('checkout.pedido') }}"
-                enctype="multipart/form-data"
-                method="POST"
-                class="space-y-12"
-            >
-                @csrf
+    <form
+        id="checkoutForm"
+        action="{{ route('checkout.pedido') }}"
+        enctype="multipart/form-data"
+        method="POST"
+        class="space-y-12"
+    >
+        @csrf
+        <div class="row g-4 mt-4">
+            <!-- Left Column -->         
+                <div class="col-lg-8">                
                     <!-- Customer Information -->
                     <section class="glass-panel p-4 mb-4">
                         <div class="d-flex justify-content-between align-items-center mb-4">
@@ -192,74 +219,150 @@
                         </button>
                         <button id="btnEnviarPedido" type="submit" class="btn btn-gold">Enviar pedido</button>
                     </div>
-                </form>
-            </div>
-        
-        <!-- Right Column -->
-        <div class="col-lg-4">
-            <div class="sticky-top" style="top: 100px;">
-                <aside class="glass-panel p-4 mb-4">
-                    <h2 class="font-display h5 pb-3 mb-4 border-bottom border-secondary border-opacity-10">Resumen del Pedido</h2>
-                    <div class="custom-scrollbar overflow-y-auto mb-4" style="max-height: 400px;">
-                        @forelse($cartItems as $item)
-                        <div class="d-flex gap-3 mb-3">
-                            <div style="width: 80px; height: 100px; background: var(--surface-container); border-radius: 4px; overflow: hidden;">
-                                <img
-                                    src="{{ asset('storage/' . $item->options->image) }}"
-                                    alt="{{ $item->name }}" width="100%" height="100%" object-fit="cover" />
-                            </div>
-                            <div class="d-flex flex-column justify-content-between py-1">
-                                <div>
-                                    <div class="font-display fw-bold mb-1">{{ $item->name }}</div>
-                                    <div class="text-on-surface-variant text-uppercase fw-semibold" style="font-size: 10px; letter-spacing: 0.05em;">Cantidad:  {{ $item->qty }} x S/. {{ number_format($item->price, 2) }}</div>
+                    
+                </div>
+            
+            <!-- Right Column -->
+            <div class="col-lg-4">
+                <div class="sticky-top" style="top: 100px;">
+                    <aside class="glass-panel p-4 mb-4">
+                        <h2 class="font-display h5 pb-3 mb-4 border-bottom border-secondary border-opacity-10">Resumen del Pedido</h2>
+                        <div class="custom-scrollbar overflow-y-auto mb-4" style="max-height: 400px;">
+                            @forelse($cartItems as $item)
+                            <div class="d-flex gap-3 mb-3">
+                                <div style="width: 80px; height: 100px; background: var(--surface-container); border-radius: 4px; overflow: hidden;">
+                                    <img
+                                        src="{{ asset('storage/' . $item->options->image) }}"
+                                        alt="{{ $item->name }}" width="100%" height="100%" object-fit="cover" />
                                 </div>
-                                <div class="text-primary-gold fw-bold">S/. {{ number_format($item->price * $item->qty, 2) }}</div>
+                                <div class="d-flex flex-column justify-content-between py-1">
+                                    <div>
+                                        <div class="font-display fw-bold mb-1">{{ $item->name }}</div>
+                                        <div class="text-on-surface-variant text-uppercase fw-semibold" style="font-size: 10px; letter-spacing: 0.05em;">Cantidad:  {{ $item->qty }} x S/. {{ number_format($item->price, 2) }}</div>
+                                    </div>
+                                    <div class="text-primary-gold fw-bold">S/. {{ number_format($item->price * $item->qty, 2) }}</div>
+                                </div>
+                            </div>
+                            @endforeach
+                        </div>
+                        <div class="border-top border-secondary border-opacity-10 pt-3">
+
+                            <div class="mb-4">
+                                <label class="form-label fw-semibold mb-3">
+                                    Selecciona tu método de entrega
+                                </label>
+
+                                <div class="delivery-options">
+
+                                    <!-- Entrega en puntos -->
+                                    <input type="radio"
+                                        class="btn-check"
+                                        name="delivery_type"
+                                        id="pickup_point"
+                                        value="puntos"
+                                        checked>
+
+                                    <label class="delivery-card w-100 mb-2"
+                                        for="pickup_point">
+
+                                        <div>
+                                            <div class="fw-bold text-gold">
+                                                Entrega en Puntos
+                                            </div>
+                                            <small class="text-light">
+                                                Recoge tu pedido en un punto autorizado
+                                            </small>
+                                        </div>
+
+                                        <span class="badge bg-success">
+                                            Gratis
+                                        </span>
+
+                                    </label>
+
+                                    <!-- Delivery -->
+                                    <input type="radio"
+                                        class="btn-check"
+                                        name="delivery_type"
+                                        id="delivery_home"
+                                        value="delivery">
+
+                                    <label class="delivery-card w-100 mb-2"
+                                        for="delivery_home">
+
+                                        <div>
+                                            <div class="fw-bold text-gold">
+                                                Delivery
+                                            </div>
+                                            <small class="text-light">
+                                                Entrega directa a tu domicilio
+                                            </small>
+                                        </div>
+
+                                        <span class="badge bg-warning text-dark">
+                                            Costo adicional
+                                        </span>
+
+                                    </label>
+
+                                    <!-- Shalom -->
+                                    <input type="radio"
+                                        class="btn-check"
+                                        name="delivery_type"
+                                        id="shalom"
+                                        value="shalom">
+
+                                    <label class="delivery-card w-100"
+                                        for="shalom">
+
+                                        <div>
+                                            <div class="fw-bold text-gold">
+                                                Agencia Shalom
+                                            </div>
+                                            <small class="text-light">
+                                                Envío a cualquier ciudad del Perú
+                                            </small>
+                                        </div>
+
+                                        <span class="badge bg-primary">
+                                            Costo de envío
+                                        </span>
+
+                                    </label>
+
+                                </div>
+
+                            </div>
+                            <div class="d-flex justify-content-between pt-2">
+                                <span class="font-display h5 mb-0">Total</span>
+                                <span class="font-display h5 text-primary-gold mb-0">S/. {{ number_format(Cart::subtotal(), 2) }}</span>
                             </div>
                         </div>
-                        @endforeach
-                    </div>
-                    <div class="border-top border-secondary border-opacity-10 pt-3">
-                        <!-- <div class="d-flex justify-content-between text-on-surface-variant small mb-2">
-                            <span class="text-uppercase fw-semibold" style="letter-spacing: 0.1em;">Subtotal</span>
-                            <span>€280.00</span>
+                        <div class="d-flex gap-2 mt-4">
+                            <input class="form-control form-control-custom flex-grow-1 py-2 text-sm" placeholder="Tarjeta de Regalo o Código" type="text" />
+                            <button class="btn border border-primary text-primary-gold text-uppercase fw-bold" style="font-size: 10px; letter-spacing: 0.1em; padding: 0 16px;">Aplicar</button>
                         </div>
-                        <div class="d-flex justify-content-between text-on-surface-variant small mb-2">
-                            <span class="text-uppercase fw-semibold" style="letter-spacing: 0.1em;">Envío</span>
-                            <span>€15.00</span>
+                    </aside>
+                    <!-- Security -->
+                    <!-- <div class="glass-panel p-3 text-center">
+                        <div class="d-flex justify-content-center gap-3 mb-3 opacity-50">
+                            <i class="fa-solid fa-shield-halved text-primary-gold h4"></i>
+                            <i class="fa-solid fa-circle-check text-primary-gold h4"></i>
+                            <i class="fa-solid fa-award text-primary-gold h4"></i>
                         </div>
-                        <div class="d-flex justify-content-between text-on-surface-variant small mb-3">
-                            <span class="text-uppercase fw-semibold" style="letter-spacing: 0.1em;">IVA (21%)</span>
-                            <span>€61.95</span>
-                        </div> -->
-                        <div class="d-flex justify-content-between pt-2">
-                            <span class="font-display h5 mb-0">Total</span>
-                            <span class="font-display h5 text-primary-gold mb-0">S/. {{ number_format(Cart::subtotal(), 2) }}</span>
+                        <div class="d-flex justify-content-center gap-4 mb-3 opacity-50">
+                            <i class="fa-brands fa-cc-visa h3"></i>
+                            <i class="fa-brands fa-cc-mastercard h3"></i>
+                            <i class="fa-brands fa-cc-apple-pay h3"></i>
                         </div>
-                    </div>
-                    <div class="d-flex gap-2 mt-4">
-                        <input class="form-control form-control-custom flex-grow-1 py-2 text-sm" placeholder="Tarjeta de Regalo o Código" type="text" />
-                        <button class="btn border border-primary text-primary-gold text-uppercase fw-bold" style="font-size: 10px; letter-spacing: 0.1em; padding: 0 16px;">Aplicar</button>
-                    </div>
-                </aside>
-                <!-- Security -->
-                <div class="glass-panel p-3 text-center">
-                    <div class="d-flex justify-content-center gap-3 mb-3 opacity-50">
-                        <i class="fa-solid fa-shield-halved text-primary-gold h4"></i>
-                        <i class="fa-solid fa-circle-check text-primary-gold h4"></i>
-                        <i class="fa-solid fa-award text-primary-gold h4"></i>
-                    </div>
-                    <div class="d-flex justify-content-center gap-4 mb-3 opacity-50">
-                        <i class="fa-brands fa-cc-visa h3"></i>
-                        <i class="fa-brands fa-cc-mastercard h3"></i>
-                        <i class="fa-brands fa-cc-apple-pay h3"></i>
-                    </div>
-                    <p class="text-on-surface-variant text-uppercase fw-semibold mb-0" style="font-size: 9px; line-height: 1.6; letter-spacing: 0.1em;">
-                        Pago seguro encriptado SSL de 256 bits. <br /> Todos los datos se procesan de acuerdo con las regulaciones de GDPR.
-                    </p>
+                        <p class="text-on-surface-variant text-uppercase fw-semibold mb-0" style="font-size: 9px; line-height: 1.6; letter-spacing: 0.1em;">
+                            Pago seguro encriptado SSL de 256 bits. <br /> Todos los datos se procesan de acuerdo con las regulaciones de GDPR.
+                        </p>
+                    </div> -->
                 </div>
             </div>
         </div>
-    </div>
+    </form>
 </div>
 
 

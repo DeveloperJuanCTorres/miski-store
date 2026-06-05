@@ -129,9 +129,11 @@
 <div class="carousel slide" data-bs-ride="carousel" id="heroCarousel">
     <!-- Indicators -->
     <div class="carousel-indicators mb-5">
-        <button aria-current="true" aria-label="Slide 1" class="active" data-bs-slide-to="0" data-bs-target="#heroCarousel" type="button"></button>
-        <button aria-label="Slide 2" data-bs-slide-to="1" data-bs-target="#heroCarousel" type="button"></button>
-        <button aria-label="Slide 3" data-bs-slide-to="2" data-bs-target="#heroCarousel" type="button"></button>
+        @foreach($banners as $key => $banner)
+        <button aria-current="true" aria-label="Slide 1" class="{{ $key == 0 ? 'active' : '' }}" data-bs-slide-to="{{$key}}" data-bs-target="#heroCarousel" type="button"></button>
+        <!-- <button aria-label="Slide 2" data-bs-slide-to="1" data-bs-target="#heroCarousel" type="button"></button>
+        <button aria-label="Slide 3" data-bs-slide-to="2" data-bs-target="#heroCarousel" type="button"></button> -->
+        @endforeach
     </div>
     <div class="carousel-inner">
          @foreach($banners as $key => $banner)
