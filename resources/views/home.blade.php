@@ -231,9 +231,9 @@
                          VER DETALLE
                         </button>
                     </div>
-                    <h3 class="font-display h6 mb-1">{{$product->name}}</h3>
+                    <h3 class="font-display h6 mb-1 text-center">{{$product->name}}</h3>
                     <!-- <p class="label-caps text-on-surface-variant mb-2" style="font-size: 11px;">Eau de Parfum • 100ml</p> -->
-                    <p class="text-primary-custom fs-5 mb-0">S/. {{ number_format($product->price, 2) }}</p>
+                    <p class="text-primary-custom fs-5 mb-0 text-center">S/. {{ number_format($product->price, 2) }}</p>
                 </div>
             </div>
             @endforeach
@@ -399,9 +399,9 @@
                                     </button>
                                 </div>
                             </div>
-                            <div class="d-flex justify-content-between align-items-start mb-2">
-                                <div>
-                                    <h3 class="font-display h5 mb-1">
+                            <div class="mb-2">
+                                <div class="text-center">
+                                    <h3 class="font-display h5 mb-1 text-center">
                                         {{ $product->name }}
                                     </h3>
                                 </div>
