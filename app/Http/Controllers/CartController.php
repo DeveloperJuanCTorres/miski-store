@@ -144,8 +144,9 @@ class CartController extends Controller
     public function checkout()
     {
         $company = Company::first();
+        $categories = Taxonomy::all();
         $cartItems = Cart::content();
 
-        return view('cart.checkout', compact('cartItems', 'company'));
+        return view('cart.checkout', compact('cartItems', 'company', 'categories'));
     }
 }
