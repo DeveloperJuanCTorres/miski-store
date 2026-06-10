@@ -49,7 +49,9 @@
                         <i class="fab fa-tiktok"></i>
                     </a>
 
-                    <a href="{{$company->whatsapp}}" target="_blank" class="social-link">
+                  <a href="https://wa.me/{{ $company->whatsapp }}?text=Hola,%20quisiera%20más%20información"
+                    target="_blank"
+                    class="social-link">
                         <i class="fab fa-whatsapp"></i>
                     </a>
 
