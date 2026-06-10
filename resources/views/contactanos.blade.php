@@ -42,10 +42,18 @@
                     <div class="glass-panel">
                         <div class="icon-box"><i class="fas fa-clock"></i></div>
                         <h3 class="card-title-custom">Horarios</h3>
-                        <p class="text-on-surface-variant mb-0">
-                            24/7
-                            <!-- Lun - Sáb: 10:00 - 20:00<br />Dom: 11:00 - 18:00 -->
-                        </p>
+                        <ul>
+                            <li class="text-on-surface-variant mb-0">
+                                Lunes a Sábado de 5:00 pm a 9:00 pm 
+                            </li>
+                            <li class="text-on-surface-variant mb-0">
+                                Agendar recojo un día antes.
+                            </li>
+                            <li class="text-on-surface-variant mb-0">
+                                No hay atención Domingos y feriados.
+                            </li>
+                        </ul>
+                        
                     </div>
                 </div>
             </div>

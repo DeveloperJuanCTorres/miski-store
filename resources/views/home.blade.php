@@ -190,7 +190,8 @@
                             </h3>
 
                             <p class="text-white mb-0">
-                                Esencias botánicas intensas
+                                {{ $category->description }}
+                                
                             </p>
                         </div>
                     </div>

@@ -19,10 +19,10 @@
                     <div class="featured-content">
                         <div class="d-flex align-items-center gap-2 mb-2">
                             <i class="fa-solid fa-truck-fast text-primary-custom"></i>
-                            <span class="footer-label text-primary-custom m-0">Priority Logistics</span>
+                            <!-- <span class="footer-label text-primary-custom m-0">Priority Logistics</span> -->
                         </div>
                         <h2 class="font-display h3 text-white mb-3">Envío a domicilio</h2>
-                        <p class="text-variant mb-4" style="max-width: 448px;">Transporte climatizado y seguimiento en tiempo real para asegurar que cada fragancia llegue con su esencia intacta hasta su puerta.</p>
+                        <p class="text-variant mb-4" style="max-width: 448px;">Traslado seguro con costo adicional a tu domicilio de Lunes a Sábado</p>
                         <button class="btn btn-primary-custom"
                                 data-bs-toggle="modal"
                                 data-bs-target="#deliveryModal">
@@ -39,10 +39,10 @@
                     <div class="featured-content">
                         <div class="d-flex align-items-center gap-2 mb-2">
                             <i class="fa-solid fa-location-dot text-primary-custom"></i>
-                            <span class="footer-label text-primary-custom m-0">Priority Logistics</span>
+                            <!-- <span class="footer-label text-primary-custom m-0">Priority Logistics</span> -->
                         </div>
                         <h2 class="font-display h3 text-white mb-3">Puntos de entrega gratuitos</h2>
-                        <p class="text-variant mb-4" style="max-width: 448px;">Transporte climatizado y seguimiento en tiempo real para asegurar que cada fragancia llegue con su esencia intacta hasta su puerta.</p>
+                        <p class="text-variant mb-4" style="max-width: 448px;">Puntos de entrega gratuitos en el distrito de Chorrillos con previa programación de 24Hrs a excepción de domingos y feriados.</p>
                         <button class="btn btn-primary-custom"
                                 data-bs-toggle="modal"
                                 data-bs-target="#pickupModal">
@@ -59,10 +59,10 @@
                     <div class="featured-content">
                         <div class="d-flex align-items-center gap-2 mb-2">
                             <i class="fa-solid fa-box-open text-primary-custom"></i>
-                            <span class="footer-label text-primary-custom m-0">Priority Logistics</span>
+                            <!-- <span class="footer-label text-primary-custom m-0">Priority Logistics</span> -->
                         </div>
                         <h2 class="font-display h3 text-white mb-3">Envíos por agencia</h2>
-                        <p class="text-variant mb-4" style="max-width: 448px;">Transporte climatizado y seguimiento en tiempo real para asegurar que cada fragancia llegue con su esencia intacta hasta su puerta.</p>
+                        <p class="text-variant mb-4" style="max-width: 448px;">Envíos por agencia Shalom 2 veces por semana. Solo cancela tus productos y tu envio al recoger tu pedido en tu agencia.</p>
                         <button class="btn btn-primary-custom"
                                 data-bs-toggle="modal"
                                 data-bs-target="#agencyModal">
@@ -95,7 +95,7 @@
                     <p class="text-variant mt-3">
                         Revisa el mapa interactivo de cobertura y
                         conoce el precio estimado del delivery
-                        hacia tu distrito o provincia.
+                        hacia tu distrito.
                     </p>
 
                     <div class="d-flex flex-wrap gap-3 mt-4">
@@ -186,22 +186,22 @@
 
                             <div class="feature-item">
                                 <i class="fa-solid fa-clock"></i>
-                                <span>Entrega en 24 a 48 horas</span>
+                                <span>Agendar 1 día antes.</span>
                             </div>
 
                             <div class="feature-item">
                                 <i class="fa-solid fa-location-dot"></i>
-                                <span>Seguimiento en tiempo real</span>
+                                <span>Deliverys de lunes a Sábado.</span>
                             </div>
 
                             <div class="feature-item">
                                 <i class="fa-solid fa-shield"></i>
-                                <span>Protección anti derrames</span>
+                                <span>Costo variable según ubicación, peso y tamaño del pedido.</span>
                             </div>
 
                             <div class="feature-item">
                                 <i class="fa-solid fa-box"></i>
-                                <span>Empaque premium</span>
+                                <span>Recibe tu compra entre la 1 pm y 8 pm del día agendado.</span>
                             </div>
 
                         </div>
@@ -218,12 +218,10 @@
 
                             <ul class="service-list">
                                 <li>Atención personalizada</li>
-                                <li>Confirmación por WhatsApp</li>
-                                <li>Courier certificado</li>
-                                <li>Seguro ante incidencias</li>
+                                <li>Courier certificado.</li>
                             </ul>
 
-                            <a href="https://wa.me/51999999999"
+                            <a href="https://wa.me/{{$company->whatsapp}}"
                                target="_blank"
                                class="btn btn-primary-custom w-100 mt-4">
                                 Solicitar envío
@@ -249,7 +247,7 @@
             <div class="modal-header border-0">
                 <h3 class="modal-title text-white">
                     <i class="fa-solid fa-location-dot me-2 text-primary-custom"></i>
-                    Puntos de entrega
+                    Puntos de entrega gratuitos
                 </h3>
 
                 <button type="button"
@@ -263,37 +261,69 @@
 
                     <div class="col-lg-6">
                         <div class="location-card">
-                            <h5 class="text-white">Centro de Lima</h5>
-                            <p class="text-variant">
-                                Disponible de lunes a sábado.
-                            </p>
+                            <h5 class="text-white">Tambo de la Curva (Altura puente peatonal)</h5>
+                            <ul>
+                                <li class="text-variant">
+                                    3:00 pm | Mar - Jue - Sáb
+                                </li>
+                                <li class="text-variant">
+                                    Máx. por cliente: 2 bolsas medianas
+                                </li>
+                                <li class="text-variant">
+                                    Agendar 1 día antes de las 5:00 pm
+                                </li>
+                            </ul>
                         </div>
                     </div>
 
                     <div class="col-lg-6">
                         <div class="location-card">
-                            <h5 class="text-white">San Isidro</h5>
-                            <p class="text-variant">
-                                Entregas rápidas y seguras.
-                            </p>
+                            <h5 class="text-white">Estación Matelini (Costado del Aruma)</h5>
+                            <ul>
+                                <li class="text-variant">
+                                    3:30 pm | Mar - Jue - Sáb
+                                </li>
+                                <li class="text-variant">
+                                    Máx. por cliente: 2 bolsas medianas
+                                </li>
+                                <li class="text-variant">
+                                    Agendar 1 día antes de las 5:00 pm
+                                </li>
+                            </ul>
                         </div>
                     </div>
 
                     <div class="col-lg-6">
                         <div class="location-card">
-                            <h5 class="text-white">Miraflores</h5>
-                            <p class="text-variant">
-                                Retiro gratuito de pedidos.
-                            </p>
+                            <h5 class="text-white">Mercado Santa Rosa (Puerta principal)</h5>
+                            <ul>
+                                <li class="text-variant">
+                                    4:00 pm | Mar - Jue - Sáb
+                                </li>
+                                <li class="text-variant">
+                                    Máx. por cliente: 2 bolsas medianas
+                                </li>
+                                <li class="text-variant">
+                                    Agendar 1 día antes de las 5:00 pm
+                                </li>
+                            </ul>
                         </div>
                     </div>
 
                     <div class="col-lg-6">
                         <div class="location-card">
-                            <h5 class="text-white">Los Olivos</h5>
-                            <p class="text-variant">
-                                Atención de 9AM a 8PM.
-                            </p>
+                            <h5 class="text-white">Mercado Los cedros puesto 89 (Fte. Plaza Vea)</h5>
+                            <ul>
+                                <li class="text-variant">
+                                    10:00 am a 5:00 pm | Mar - Sáb
+                                </li>
+                                <li class="text-variant">
+                                    Cantidad ilimitada de entrega
+                                </li>
+                                <li class="text-variant">
+                                    Agendar 1 día antes de las 10:00 pm
+                                </li>
+                            </ul>
                         </div>
                     </div>
 
@@ -324,30 +354,23 @@
             <div class="modal-body">
 
                 <div class="timeline-service">
-
-                    <div class="timeline-item">
-                        <span>1</span>
-                        <div>
-                            <h5>Preparación del pedido</h5>
-                            <p>Empaque premium y validación.</p>
-                        </div>
-                    </div>
-
-                    <div class="timeline-item">
-                        <span>2</span>
-                        <div>
-                            <h5>Despacho a agencia</h5>
-                            <p>Envío seguro a provincia.</p>
-                        </div>
-                    </div>
-
-                    <div class="timeline-item">
-                        <span>3</span>
-                        <div>
-                            <h5>Entrega final</h5>
-                            <p>Recojo en oficina o domicilio.</p>
-                        </div>
-                    </div>
+                    <ul>
+                        <li>
+                            <h5>Envíos Miercoles y Sabados.</h5>
+                        </li>
+                        <li>
+                            <h5>Sin costo de embalaje ni traslado a la agencia.</h5>
+                        </li>
+                        <li>
+                            <h5>Puedes acumular compras por hasta 60 días en nuestro almacén sin costo adicional.</h5>
+                        </li>
+                        <li>
+                            <h5>Compras mínimas de S/. 50.00 para agendar tu envío</h5>
+                        </li>
+                        <li>
+                            <h5>Programa tu envió un día antes hasta las 10 pm.</h5>
+                        </li>
+                    </ul>                    
 
                 </div>
 

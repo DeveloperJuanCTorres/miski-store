@@ -53,26 +53,26 @@
 
     <script>
 
-    Swal.fire({
-        icon: 'success',
-        title: '¡Pedido enviado correctamente!',
-        html: `
-            <div style="font-size:14px; line-height:1.8;">
-                Hemos recibido su pedido satisfactoriamente.<br><br>
+        Swal.fire({
+            icon: 'success',
+            title: '¡Pedido enviado correctamente!',
+            html: `
+                <div style="font-size:14px; line-height:1.8;">
+                    Hemos recibido su pedido satisfactoriamente.<br><br>
 
-                Se procederá a validar el pago.<br><br>
+                    Se procederá a validar el pago.<br><br>
 
-                Gracias por confiar en nosotros.
-            </div>
-        `,
-        confirmButtonText: 'Continuar',
-        confirmButtonColor: '#c8a96b',
-        background: '#111827',
-        color: '#ffffff',
-        backdrop: `
-            rgba(0,0,0,0.75)
-        `
-    });
+                    Gracias por confiar en nosotros.
+                </div>
+            `,
+            confirmButtonText: 'Continuar',
+            confirmButtonColor: '#c8a96b',
+            background: '#111827',
+            color: '#ffffff',
+            backdrop: `
+                rgba(0,0,0,0.75)
+            `
+        });
 
     </script>
 
@@ -82,17 +82,17 @@
 
     <script>
 
-    Swal.fire({
-        toast: true,
-        position: 'top-end',
-        icon: 'error',
-        title: @json(session('error')),
-        showConfirmButton: false,
-        timer: 5000,
-        timerProgressBar: true,
-        background: '#7f1d1d',
-        color: '#fff'
-    });
+        Swal.fire({
+            toast: true,
+            position: 'top-end',
+            icon: 'error',
+            title: @json(session('error')),
+            showConfirmButton: false,
+            timer: 5000,
+            timerProgressBar: true,
+            background: '#7f1d1d',
+            color: '#fff'
+        });
 
     </script>
 

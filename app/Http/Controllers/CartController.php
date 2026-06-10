@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Company;
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Taxonomy;
 use Gloudemans\Shoppingcart\Facades\Cart;
 
 class CartController extends Controller
@@ -13,13 +14,33 @@ class CartController extends Controller
     {
         $company = Company::first();
         $cartItems = Cart::content();
+        $categories = Taxonomy::all();
 
-        return view('cart.index', compact('cartItems', 'company'));
+        return view('cart.index', compact('cartItems', 'company', 'categories'));
     }
 
     public function add(Request $request)
     {
         $product = Product::findOrFail($request->product_id);
+
+        $currentQty = 0;
+
+        foreach (Cart::content() as $item) {
+            if ($item->id == $product->id) {
+                $currentQty = $item->qty;
+                break;
+            }
+        }
+
+        $qtyRequested = $request->qty;
+        $totalQty = $currentQty + $qtyRequested;
+
+        if ($totalQty > $product->stock) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Stock insuficiente. Solo quedan ' . $product->stock,
+            ]);
+        }
 
         $images = json_decode($product->images, true);
 
@@ -69,8 +90,19 @@ class CartController extends Controller
     public function update(Request $request)
     {
         $rowId = $request->rowId;
+        $qty = (int)$request->qty;
 
-        $qty = $request->qty;
+        $cartItem = Cart::get($rowId);
+
+        $product = Product::find($cartItem->id);
+
+        if($qty > $product->stock)
+        {
+            return response()->json([
+                'success' => false,
+                'message' => 'Solo hay '.$product->stock.' unidades disponibles.'
+            ]);
+        }
 
         Cart::update($rowId, $qty);
 

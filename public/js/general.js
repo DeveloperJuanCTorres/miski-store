@@ -240,8 +240,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
         .then(data => {
 
+            if(!data.success){
+                Toast.fire({
+                    icon: 'error',
+                    title: data.message
+                });
+                return;
+            }
+
             if(data.success)
-            {
+            {                
+
                 // CONTADOR
                 document.getElementById('cartCount').innerText = data.count;
 
@@ -371,6 +380,14 @@ document.addEventListener('DOMContentLoaded', function () {
         .then(response => response.json())
 
         .then(data => {
+
+            if(!data.success){
+                Toast.fire({
+                    icon: 'error',
+                    title: data.message
+                });
+                return;
+            }
 
             if(data.success)
             {
@@ -549,6 +566,14 @@ function updateQty(rowId, change)
     .then(response => response.json())
 
     .then(data => {
+
+        if(!data.success){
+            Toast.fire({
+                icon: 'error',
+                title: data.message
+            });
+            return;
+        }
 
         // =========================
         // CANTIDAD

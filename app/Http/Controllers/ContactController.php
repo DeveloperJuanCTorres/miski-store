@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Company;
+use App\Models\Taxonomy;
 use Illuminate\Http\Request;
 
 class ContactController extends Controller
@@ -10,6 +11,7 @@ class ContactController extends Controller
     public function index()
     {
         $company = Company::first();
-        return view('contactanos', compact('company'));
+        $categories = Taxonomy::all();
+        return view('contactanos', compact('company', 'categories'));
     }
 }

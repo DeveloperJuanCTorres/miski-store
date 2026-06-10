@@ -64,21 +64,15 @@
 
                 <ul class="footer-menu">
 
-                    <li>
-                        <a href="#">Nuevas Llegadas</a>
-                    </li>
+                    @foreach($categories as $category)
 
-                    <li>
-                        <a href="#">Colecciones</a>
-                    </li>
+                        <li>
+                            <a href="{{ route('tienda', ['category' => $category->id]) }}">
+                                {{ $category->name }}
+                            </a>
+                        </li>
 
-                    <li>
-                        <a href="#">Productos Exclusivos</a>
-                    </li>
-
-                    <li>
-                        <a href="#">Promociones</a>
-                    </li>
+                    @endforeach
 
                 </ul>
 
