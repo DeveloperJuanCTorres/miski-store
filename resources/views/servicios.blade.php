@@ -14,7 +14,7 @@
             <!-- Main Featured Service -->
             <div class="col-lg-4">
                 <div class="glass-card1 featured-card h-100">
-                    <div class="featured-bg" style="background: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDsGTT4bLNZCWaNfxfDyKkjGmHADkL5xbwsuN7bW9VJm8C25GQ5A5FpoBlezGdDFrdTuo6lUsAB9cMukpoDpU65pc_T6TEjVnXMN__nT3cCZZDWWeHyUYj_xAjTe02bwwaLafgp8hsdAWS-im7FR9HIjh7q0MD1ms6UeYj4PiF8994_xsdOBVrz2cqSx_eLxroednvuvyp6zoPVEdOYDd9piw8IOTGRObx8AKBRQTR7Ohaw8wdh1XxAVAqAMIF8CFKQMe8jPrexv2c') center/cover no-repeat;"></div>
+                    <div class="featured-bg" style="background: url('images/delivery.jpeg') center/cover no-repeat;"></div>
                     <div class="featured-overlay"></div>
                     <div class="featured-content">
                         <div class="d-flex align-items-center gap-2 mb-2">
@@ -34,7 +34,7 @@
 
             <div class="col-lg-4">
                 <div class="glass-card1 featured-card h-100">
-                    <div class="featured-bg" style="background: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDsGTT4bLNZCWaNfxfDyKkjGmHADkL5xbwsuN7bW9VJm8C25GQ5A5FpoBlezGdDFrdTuo6lUsAB9cMukpoDpU65pc_T6TEjVnXMN__nT3cCZZDWWeHyUYj_xAjTe02bwwaLafgp8hsdAWS-im7FR9HIjh7q0MD1ms6UeYj4PiF8994_xsdOBVrz2cqSx_eLxroednvuvyp6zoPVEdOYDd9piw8IOTGRObx8AKBRQTR7Ohaw8wdh1XxAVAqAMIF8CFKQMe8jPrexv2c') center/cover no-repeat;"></div>
+                    <div class="featured-bg" style="background: url('images/entrega.jpeg') center/cover no-repeat;"></div>
                     <div class="featured-overlay"></div>
                     <div class="featured-content">
                         <div class="d-flex align-items-center gap-2 mb-2">
@@ -54,7 +54,7 @@
 
             <div class="col-lg-4">
                 <div class="glass-card1 featured-card h-100">
-                    <div class="featured-bg" style="background: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDsGTT4bLNZCWaNfxfDyKkjGmHADkL5xbwsuN7bW9VJm8C25GQ5A5FpoBlezGdDFrdTuo6lUsAB9cMukpoDpU65pc_T6TEjVnXMN__nT3cCZZDWWeHyUYj_xAjTe02bwwaLafgp8hsdAWS-im7FR9HIjh7q0MD1ms6UeYj4PiF8994_xsdOBVrz2cqSx_eLxroednvuvyp6zoPVEdOYDd9piw8IOTGRObx8AKBRQTR7Ohaw8wdh1XxAVAqAMIF8CFKQMe8jPrexv2c') center/cover no-repeat;"></div>
+                    <div class="featured-bg" style="background: url('images/agencia.jpeg') center/cover no-repeat;"></div>
                     <div class="featured-overlay"></div>
                     <div class="featured-content">
                         <div class="d-flex align-items-center gap-2 mb-2">
