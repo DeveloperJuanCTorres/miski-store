@@ -137,7 +137,7 @@
             <h4 class="font-display h4 text-primary-custom mb-3 text-uppercase tracking-widest">¿Necesita asistencia especial?</h4>
             <!-- <p class="text-variant mb-4 fs-6">Nuestro equipo de soporte VIP está disponible las 24 horas para gestionar sus envíos internacionales.</p> -->
             <div class="d-flex flex-column flex-md-row justify-content-center gap-3">
-                <a href="{{ route('contactanos') }}" class="btn btn-primary-custom px-5 py-3">Contactar Soporte</a>
+                <a href="https://wa.me/{{ $company->whatsapp }}?text=Hola,%20necesito%20asistencia%20especial" target="_blank" class="btn btn-primary-custom px-5 py-3">Contactar Soporte</a>
                 <!-- <button class="btn btn-outline-custom px-5 py-3">Preguntas Frecuentes</button> -->
             </div>
         </div>
