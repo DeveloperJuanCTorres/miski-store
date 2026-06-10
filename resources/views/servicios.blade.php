@@ -135,10 +135,10 @@
     <section class="container mt-5 px-4 px-md-5 text-center">
         <div class="py-5 border-top border-white border-opacity-10">
             <h4 class="font-display h4 text-primary-custom mb-3 text-uppercase tracking-widest">¿Necesita asistencia especial?</h4>
-            <p class="text-variant mb-4 fs-6">Nuestro equipo de soporte VIP está disponible las 24 horas para gestionar sus envíos internacionales.</p>
+            <!-- <p class="text-variant mb-4 fs-6">Nuestro equipo de soporte VIP está disponible las 24 horas para gestionar sus envíos internacionales.</p> -->
             <div class="d-flex flex-column flex-md-row justify-content-center gap-3">
-                <button class="btn btn-primary-custom px-5 py-3">Contactar Soporte</button>
-                <button class="btn btn-outline-custom px-5 py-3">Preguntas Frecuentes</button>
+                <a href="{{ route('contactanos') }}" class="btn btn-primary-custom px-5 py-3">Contactar Soporte</a>
+                <!-- <button class="btn btn-outline-custom px-5 py-3">Preguntas Frecuentes</button> -->
             </div>
         </div>
     </section>
