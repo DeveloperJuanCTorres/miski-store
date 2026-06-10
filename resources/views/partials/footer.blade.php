@@ -88,7 +88,7 @@
                 <ul class="footer-menu">
 
                     <li>
-                        <a href="#">Contáctanos</a>
+                        <a href="{{ route('contactanos') }}">Contáctanos</a>
                     </li>
 
                     <li>
