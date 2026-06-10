@@ -202,8 +202,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="{{ asset('js/general.js') }}"></script>
-    <script src="{{asset('js/ubigeo.js')}}"></script>
+    <script src="{{ asset('js/general.js') }}?v=<?php echo $version ?>"></script>
+    <script src="{{asset('js/ubigeo.js')}}?v=<?php echo $version ?>"></script>
     
 </body>
 </html>
