@@ -41,7 +41,7 @@
                             <i class="fa-solid fa-location-dot text-primary-custom"></i>
                             <!-- <span class="footer-label text-primary-custom m-0">Priority Logistics</span> -->
                         </div>
-                        <h2 class="font-display h3 text-white mb-3">Puntos de entrega gratuitos en CHORRILLOS</h2>
+                        <h2 class="font-display h3 text-white mb-3">Puntos de entrega gratuitos en Chorrillos</h2>
                         <p class="text-variant mb-4" style="max-width: 448px;">Puntos de entrega gratuitos en el distrito de Chorrillos con previa programación de 24Hrs a excepción de domingos y feriados.</p>
                         <button class="btn btn-primary-custom"
                                 data-bs-toggle="modal"
