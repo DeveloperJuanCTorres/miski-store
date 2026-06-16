@@ -161,6 +161,28 @@
                                         S/. {{ number_format($item->price * $item->qty, 2) }}
                                     </span>
                                 </div>
+                                @if($item->options->color_name)
+
+                                <div class="d-flex align-items-center gap-2 mt-1">
+
+                                    <span
+                                        style="
+                                            width:14px;
+                                            height:14px;
+                                            border-radius:50%;
+                                            background: {{ $item->options->color_hex }};
+                                            border:1px solid #ccc;
+                                            display:inline-block;
+                                        ">
+                                    </span>
+
+                                    <span class="small text-secondary">
+                                        {{ $item->options->color_name }}
+                                    </span>
+
+                                </div>
+
+                                @endif
                             </div>
                             <div class="d-flex justify-content-between align-items-center mt-4">
                                 <div class="qty-controls">

@@ -92,15 +92,15 @@
                     </li>
 
                     <li>
-                        <a href="#">Política de Privacidad</a>
+                        <a href="{{route('politicas')}}">Política de Privacidad</a>
                     </li>
 
                     <li>
-                        <a href="#">Términos y Condiciones</a>
+                        <a href="{{route('terminos')}}">Términos y Condiciones</a>
                     </li>
 
                     <li>
-                        <a href="#">Envíos y Devoluciones</a>
+                        <a href="{{route('envios')}}">Envíos y Devoluciones</a>
                     </li>
 
                 </ul>

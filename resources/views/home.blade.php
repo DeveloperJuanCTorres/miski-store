@@ -246,53 +246,43 @@
     <div class="container container-max px-4 px-md-5">
         <div class="glass-card p-4 p-md-5 rounded-4 row align-items-center g-5 m-0">
             <div class="col-lg-6">
-                <span class="label-caps text-primary-custom d-block mb-3">Comunidad privada</span>
-                <h2 class="font-display display-5 mb-4">Venta Privada de Esencias Raras</h2>
-                <p class="fs-5 text-on-surface-variant mb-4">Acceda a nuestra comunidad privada de clásicos descatalogados y prototipos de edición limitada.</p>
-                <!-- <div class="d-flex gap-3 mb-5">
-                    <div class="text-center">
-                        <div class="countdown-box font-display">12</div>
-                        <span class="label-caps text-on-surface-variant d-block mt-2" style="font-size: 10px;">Horas</span>
-                    </div>
-                    <div class="text-center">
-                        <div class="countdown-box font-display">45</div>
-                        <span class="label-caps text-on-surface-variant d-block mt-2" style="font-size: 10px;">Mins</span>
-                    </div>
-                    <div class="text-center">
-                        <div class="countdown-box font-display">08</div>
-                        <span class="label-caps text-on-surface-variant d-block mt-2" style="font-size: 10px;">Segs</span>
-                    </div>
-                </div> -->
-                <button class="btn bg-primary-custom text-dark px-5 py-3 label-caps fw-bold">Unirse a la Lista de Espera</button>
+                <span class="label-caps text-white d-block mb-3">Comunidad privada</span>
+                <h2 class="font-display text-primary-custom display-5 mb-4">Cotiza tus productos por nuestro WhatsApp.</h2>
+                <p class="fs-5 text-on-surface-variant mb-4">Accede a nuestra comunidad privada para obtener grandes ofertas</p>
+               
+                <a href="#" class="btn bg-primary-custom text-dark px-5 py-3 label-caps fw-bold">Unirse a la Lista de Espera</a>
             </div>
             <div class="col-lg-6">
                 <div class="row g-3">
                     <div class="col-md-6">
                         <div class="p-4 border border-white border-opacity-10 bg-white bg-opacity-5 rounded-3 text-center h-100">
-                            <i class="fa-solid fa-wand-sparkles text-primary-custom fs-2 mb-3"></i>
-                            <h4 class="font-display h5 mb-2">Curaduría</h4>
-                            <p class="small text-on-surface-variant mb-0">Solo 100 botellas por aroma en todo el mundo.</p>
+                            <i class="fa-solid fa-cart-shopping text-primary-custom fs-2 mb-3"></i>
+                            <h4 class="font-display text-primary-custom h5 mb-2">Preventas</h4>
+                            <p class="small text-on-surface-variant mb-0">Preventas semanales con precios competitivos.</p>
                         </div>
                     </div>
+
                     <div class="col-md-6">
                         <div class="p-4 border border-white border-opacity-10 bg-white bg-opacity-5 rounded-3 text-center h-100">
-                            <i class="fa-solid fa-box text-primary-custom fs-2 mb-3"></i>
-                            <h4 class="font-display h5 mb-2">Conserje</h4>
-                            <p class="small text-on-surface-variant mb-0">Envío global con entrega de guante blanco.</p>
+                            <i class="fa-solid fa-tags text-primary-custom fs-2 mb-3"></i>
+                            <h4 class="font-display text-primary-custom h5 mb-2">Ofertas</h4>
+                            <p class="small text-on-surface-variant mb-0">Ofertas de productos de catálogo.</p>
                         </div>
                     </div>
+
                     <div class="col-md-6">
                         <div class="p-4 border border-white border-opacity-10 bg-white bg-opacity-5 rounded-3 text-center h-100">
-                            <i class="fa-solid fa-gift text-primary-custom fs-2 mb-3"></i>
-                            <h4 class="font-display h5 mb-2">Embalaje</h4>
-                            <p class="small text-on-surface-variant mb-0">Estuches de presentación de cuero hechos a mano.</p>
+                            <i class="fa-solid fa-percent text-primary-custom fs-2 mb-3"></i>
+                            <h4 class="font-display text-primary-custom h5 mb-2">Liquidaciones</h4>
+                            <p class="small text-on-surface-variant mb-0">Liquidación de productos en stock por tiempo limitado.</p>
                         </div>
                     </div>
+
                     <div class="col-md-6">
                         <div class="p-4 border border-white border-opacity-10 bg-white bg-opacity-5 rounded-3 text-center h-100">
-                            <i class="fa-solid fa-certificate text-primary-custom fs-2 mb-3"></i>
-                            <h4 class="font-display h5 mb-2">Auténtico</h4>
-                            <p class="small text-on-surface-variant mb-0">Seguimiento de procedencia certificado por NFC.</p>
+                            <i class="fa-solid fa-box-open text-primary-custom fs-2 mb-3"></i>
+                            <h4 class="font-display text-primary-custom h5 mb-2">Paquetes</h4>
+                            <p class="small text-on-surface-variant mb-0">Packs con buen margen para poder emprender.</p>
                         </div>
                     </div>
                 </div>

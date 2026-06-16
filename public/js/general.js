@@ -57,6 +57,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const btnAddToCart = document.getElementById('btnAddToCart');
 
+    const colorSection = document.getElementById('colorSection');
+
+    const colorContainer = document.getElementById('colorContainer');
+
+    let selectedColor = null;
+
     // =========================
     // PRODUCTO ACTUAL
     // =========================
@@ -93,6 +99,18 @@ document.addEventListener('DOMContentLoaded', function () {
         } catch (e) {
 
             images = [];
+
+        }
+
+        let colors = [];
+
+        try{
+
+            colors = JSON.parse(button.dataset.colors);
+
+        }catch(e){
+
+            colors = [];
 
         }
 
@@ -180,6 +198,60 @@ document.addEventListener('DOMContentLoaded', function () {
 
         });
 
+
+
+        colorContainer.innerHTML = '';
+
+        selectedColor = null;
+
+        if(colors.length > 0){
+
+            colorSection.classList.remove('d-none');
+
+            colors.forEach((color,index)=>{
+
+                const div = document.createElement('div');
+
+                div.className = 'color-item';
+
+                div.style.background = color.hexa;
+
+                div.title = color.name;
+
+                div.dataset.id = color.id;
+
+                if(index==0){
+
+                    div.classList.add('active');
+
+                    selectedColor = color.id;
+
+                }
+
+                div.onclick = function(){
+
+                    document.querySelectorAll('.color-item').forEach(c=>{
+
+                        c.classList.remove('active');
+
+                    });
+
+                    this.classList.add('active');
+
+                    selectedColor = this.dataset.id;
+
+                };
+
+                colorContainer.appendChild(div);
+
+            });
+
+        }else{
+
+            colorSection.classList.add('d-none');
+
+        }
+
     });
 
     // =========================
@@ -211,6 +283,16 @@ document.addEventListener('DOMContentLoaded', function () {
     // =========================
     btnAddToCart.addEventListener('click', function(){
 
+        if(colorSection && !colorSection.classList.contains('d-none') && !selectedColor){
+
+            Toast.fire({
+                icon: 'warning',
+                title: 'Seleccione un color'
+            });
+
+            return;
+        }
+
         const qty = qtyInput.value;
 
         fetch('/cart/add', {
@@ -230,6 +312,8 @@ document.addEventListener('DOMContentLoaded', function () {
             body: JSON.stringify({
 
                 product_id: currentProductId,
+
+                color_id: selectedColor, 
 
                 qty: qty
 
@@ -285,6 +369,14 @@ document.addEventListener('DOMContentLoaded', function () {
                                     <span class="fw-bold small">
                                         ${item.name}
                                     </span>
+
+                                    ${
+                                        item.color_name
+                                        ? `<span class="small text-secondary">
+                                                Color: ${item.color_name}
+                                        </span>`
+                                        : ``
+                                    }
 
                                     <span class="text-gold small">
                                         S/. ${parseFloat(item.price).toFixed(2)}

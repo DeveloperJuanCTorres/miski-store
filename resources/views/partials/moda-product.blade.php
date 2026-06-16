@@ -46,7 +46,7 @@
                                 Categoría
                             </span>
 
-                            <div class="d-flex align-items-center gap-3 mb-4">
+                            <!-- <div class="d-flex align-items-center gap-3 mb-4">
                                 <div class="stars text-gold">
                                     <i class="fa-solid fa-star"></i>
                                     <i class="fa-solid fa-star"></i>
@@ -58,7 +58,7 @@
                                 <span class="reviews-count">
                                     124 reseñas
                                 </span>
-                            </div>
+                            </div> -->
 
                             <!-- <button class="btn-wishlist">
                                 <i class="fa-regular fa-heart"></i>
@@ -103,10 +103,20 @@
                                 <span>Envíos rápidos a todo Lima</span>
                             </div>
 
-                            <!-- <div class="feature-item">
-                                <i class="fa-solid fa-shield-heart"></i>
-                                <span>Garantía de satisfacción</span>
-                            </div> -->
+                        </div>
+
+                        
+
+                        <!-- Colors -->
+                        <div class="color-section d-none" id="colorSection">
+
+                            <span class="quantity-label mb-2 d-block">
+                                Color
+                            </span>
+
+                            <div class="color-options" id="colorContainer">
+
+                            </div>
 
                         </div>
 
@@ -137,26 +147,7 @@
                                 Agregar al carrito
                             </button>
 
-                            <!-- <button class="btn-luxury-secondary">
-                                Comprar ahora
-                            </button> -->
-
                         </div>
-
-                        <!-- Footer Info -->
-                        <!-- <div class="product-meta">
-
-                            <div>
-                                <span>SKU:</span>
-                                <strong>PRF-00921</strong>
-                            </div>
-
-                            <div>
-                                <span>Categoría:</span>
-                                <strong>Perfumes Premium</strong>
-                            </div>
-
-                        </div> -->
 
                     </div>
                 </div>

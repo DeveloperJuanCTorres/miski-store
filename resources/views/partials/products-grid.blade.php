@@ -21,7 +21,8 @@
                         data-priceoferta="{{ number_format($product->price_oferta ?? $product->price, 2) }}"
                         data-description="{{ strip_tags($product->description) }}"
                         data-category="{{ $product->taxonomy->name ?? 'Categoría' }}"
-                        data-images='@json(json_decode($product->images, true))'>
+                        data-images='@json(json_decode($product->images, true))'
+                        data-colors='@json($product->colors)'>
                         Vista Rápida
                     </button>
                 </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Color;
 use App\Models\Company;
 use Illuminate\Http\Request;
 use App\Models\Product;
@@ -26,7 +27,10 @@ class CartController extends Controller
         $currentQty = 0;
 
         foreach (Cart::content() as $item) {
-            if ($item->id == $product->id) {
+            if (
+                $item->id == $product->id &&
+                ($item->options->color_id ?? null) == $request->color_id
+            ) {
                 $currentQty = $item->qty;
                 break;
             }
@@ -46,6 +50,14 @@ class CartController extends Controller
 
         $image = $images[0] ?? null;
 
+        $color = null;
+
+        if ($request->filled('color_id')) {
+
+            $color = Color::find($request->color_id);
+
+        }
+
         Cart::add([
             'id' => $product->id,
             'name' => $product->name,
@@ -53,7 +65,10 @@ class CartController extends Controller
             'price' => $product->price_oferta ?? $product->price,
             'weight' => 0,
             'options' => [
-                'image' => $image
+                'image' => $image,
+                'color_id' => $request->color_id,
+                'color_name' => $color ? $color->name : null,
+                'color_hex' => $color ? $color->hexa : null,
             ]
         ]);
 
@@ -67,7 +82,10 @@ class CartController extends Controller
                 'name' => $item->name,
                 'qty' => $item->qty,
                 'price' => $item->price,
-                'image' => $item->options->image
+                'image' => $item->options->image,
+                'color_id' => $item->options->color_id ?? null,
+                'color_name' => $item->options->color_name ?? null,
+                'color_hex' => $item->options->color_hexa ?? null,
             ];
         }
 

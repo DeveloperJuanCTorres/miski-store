@@ -114,6 +114,9 @@
         </section>
     </div>
 </div>
+<pre>
+                        {{ print_r(Cart::content()->toArray(), true) }}
+                        </pre>
 
 @include('partials.moda-product')
 

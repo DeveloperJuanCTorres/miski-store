@@ -29,6 +29,10 @@ Route::get('/store/filter', [StoreController::class, 'filter'])->name('store.fil
 Route::get('/servicios', [ServiceController::class, 'index'])->name('servicios');
 Route::get('/contactanos', [ContactController::class, 'index'])->name('contactanos');
 
+Route::get('/politicas-de-privacidad', [HomeController::class, 'politicas'])->name('politicas');
+Route::get('/terminos-y-condiciones', [HomeController::class, 'terminos'])->name('terminos');
+Route::get('/envios-y-devoluciones', [HomeController::class, 'envios'])->name('envios');
+
 Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 Route::get('/checkout', [CartController::class, 'checkout'])->name('cart.checkout');

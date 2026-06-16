@@ -1878,3 +1878,54 @@ body {
 
     opacity:.25;
 }
+
+
+
+.color-options{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-bottom:25px;
+}
+
+.color-item{
+
+    width:34px;
+    height:34px;
+
+    border-radius:50%;
+    cursor:pointer;
+
+    border:3px solid rgba(255,255,255,.15);
+
+    transition:.25s;
+
+    position:relative;
+}
+
+.color-item:hover{
+
+    transform:scale(1.12);
+
+}
+
+.color-item.active{
+
+    border:3px solid #fff;
+    box-shadow:0 0 0 4px rgba(212,175,55,.35);
+
+}
+
+.color-item::after{
+
+    content:'';
+
+    position:absolute;
+
+    inset:-5px;
+
+    border-radius:50%;
+
+    border:1px solid rgba(255,255,255,.12);
+
+}

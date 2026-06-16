@@ -317,6 +317,30 @@
                 <span class="text-gold small">
                     S/. {{ number_format($item->price, 2) }}
                 </span>
+                
+                @if($item->options->color_name)
+
+                <div class="d-flex align-items-center gap-2 mt-1">
+
+                    <span
+                        style="
+                            width:14px;
+                            height:14px;
+                            border-radius:50%;
+                            background: {{ $item->options->color_hex }};
+                            border:1px solid #ccc;
+                            display:inline-block;
+                        ">
+                    </span>
+
+                    <span class="small text-secondary">
+                        {{ $item->options->color_name }}
+                    </span>
+
+                </div>
+
+                @endif
+
                 <span class="text-variant"
                     style="font-size:12px;">
                     Cantidad: {{ $item->qty }}
