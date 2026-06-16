@@ -12,7 +12,7 @@
 
                 <div class="text-center mb-5">
 
-                    <i class="fa-solid fa-shield-halved privacy-icon"></i>
+                    <i class="fa-solid fa-truck-fast privacy-icon"></i>
 
                     <h1 class="privacy-title mt-3">
                         {{ $envio->titulo}}
