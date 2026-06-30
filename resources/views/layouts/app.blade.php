@@ -10,7 +10,7 @@
     <title>{{ config('app.name', 'Miski Store') }}</title>
 
     <?php
-    $version = '1993.5.0';
+    $version = '1993.5.1';
     ?>
 
     <link rel="apple-touch-icon" sizes="180x180" href="logos/apple-touch-icon.png">
