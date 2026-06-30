@@ -7,11 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class ColorProduct extends Model
 {
+
     protected $table = 'color_product';
 
-    public $timestamps = false;
-
-    protected $guarded = ['id'];
+    protected $fillable = [
+        'product_id',
+        'color_id',
+        'stock',
+        'image'
+    ];
 
     public function product()
     {
@@ -22,4 +26,20 @@ class ColorProduct extends Model
     {
         return $this->belongsTo(Color::class);
     }
+    
+    // protected $table = 'color_product';
+
+    // public $timestamps = false;
+
+    // protected $guarded = ['id'];
+
+    // public function product()
+    // {
+    //     return $this->belongsTo(Product::class);
+    // }
+
+    // public function color()
+    // {
+    //     return $this->belongsTo(Color::class);
+    // }
 }

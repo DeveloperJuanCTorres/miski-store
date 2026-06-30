@@ -43,6 +43,17 @@ class Product extends Model
             'color_product',
             'product_id',
             'color_id'
-        );
+        )->withPivot('stock')
+        ->withTimestamps();
     }
+
+    // public function colors()
+    // {
+    //     return $this->belongsToMany(
+    //         Color::class,
+    //         'color_product',
+    //         'product_id',
+    //         'color_id'
+    //     );
+    // }
 }

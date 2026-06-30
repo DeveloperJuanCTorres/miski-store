@@ -120,6 +120,8 @@
 
                         </div>
 
+                        <span class="small text-secondary mt-2 d-block" id="colorStockText"></span>
+
                         <!-- Quantity -->
                         <div class="quantity-section">
 

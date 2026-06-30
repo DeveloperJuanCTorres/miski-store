@@ -61,7 +61,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const colorContainer = document.getElementById('colorContainer');
 
+    const colorStockText = document.getElementById('colorStockText');
+
     let selectedColor = null;
+    let selectedStock = 0;
 
     // =========================
     // PRODUCTO ACTUAL
@@ -74,6 +77,8 @@ document.addEventListener('DOMContentLoaded', function () {
     document.addEventListener('click', function(e){
 
         const button = e.target.closest('.btnQuickView');
+
+        console.log('COLORS RAW:', button.dataset.colors);
 
         if(!button) return;
 
@@ -107,6 +112,7 @@ document.addEventListener('DOMContentLoaded', function () {
         try{
 
             colors = JSON.parse(button.dataset.colors);
+            colors = colors.filter(c => c.pivot && c.pivot.stock > 0);
 
         }catch(e){
 
@@ -220,11 +226,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 div.dataset.id = color.id;
 
+                div.dataset.stock = color.pivot.stock;
+
                 if(index==0){
 
                     div.classList.add('active');
-
                     selectedColor = color.id;
+                    selectedStock = color.pivot.stock;
+
+                    colorStockText.innerText = `Stock disponible: ${selectedStock}`;
 
                 }
 
@@ -239,6 +249,13 @@ document.addEventListener('DOMContentLoaded', function () {
                     this.classList.add('active');
 
                     selectedColor = this.dataset.id;
+                    selectedStock = parseInt(this.dataset.stock);
+
+                    colorStockText.innerText = `Stock disponible: ${selectedStock}`;
+
+                    if(parseInt(qtyInput.value) > selectedStock){
+                        qtyInput.value = selectedStock;
+                    }
 
                 };
 
@@ -259,7 +276,17 @@ document.addEventListener('DOMContentLoaded', function () {
     // =========================
     document.getElementById('qtyPlus').addEventListener('click', () => {
 
-        qtyInput.value = parseInt(qtyInput.value) + 1;
+        let current = parseInt(qtyInput.value);
+
+        if(selectedStock && current >= selectedStock){
+            Toast.fire({
+                icon: 'warning',
+                title: 'No puedes superar el stock disponible'
+            });
+            return;
+        }
+
+        qtyInput.value = current + 1;
 
     });
 
@@ -283,6 +310,16 @@ document.addEventListener('DOMContentLoaded', function () {
     // =========================
     btnAddToCart.addEventListener('click', function(){
 
+        const qty = parseInt(qtyInput.value);
+
+        if(selectedStock && qty > selectedStock){
+            Toast.fire({
+                icon: 'warning',
+                title: 'Cantidad supera el stock disponible'
+            });
+            return;
+        }
+
         if(colorSection && !colorSection.classList.contains('d-none') && !selectedColor){
 
             Toast.fire({
@@ -293,7 +330,7 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
-        const qty = qtyInput.value;
+        // const qty = qtyInput.value;
 
         fetch('/cart/add', {
 
