@@ -39,10 +39,30 @@ class CartController extends Controller
         $qtyRequested = $request->qty;
         $totalQty = $currentQty + $qtyRequested;
 
-        if ($totalQty > $product->stock) {
+        $colorStock = null;
+
+        if ($request->filled('color_id')) {
+
+            $color = Color::with(['products' => function ($q) use ($product) {
+                $q->where('product_id', $product->id);
+            }])->find($request->color_id);
+
+            $colorStock = $color?->products->first()?->pivot?->stock;
+        }
+
+        // if ($totalQty > $product->stock) {
+        //     return response()->json([
+        //         'success' => false,
+        //         'message' => 'Stock insuficiente. Solo quedan ' . $product->stock,
+        //     ]);
+        // }
+
+        $stockDisponible = $colorStock ?? $product->stock;
+
+        if ($totalQty > $stockDisponible) {
             return response()->json([
                 'success' => false,
-                'message' => 'Stock insuficiente. Solo quedan ' . $product->stock,
+                'message' => 'Stock insuficiente. Solo quedan ' . $stockDisponible,
             ]);
         }
 
@@ -85,7 +105,7 @@ class CartController extends Controller
                 'image' => $item->options->image,
                 'color_id' => $item->options->color_id ?? null,
                 'color_name' => $item->options->color_name ?? null,
-                'color_hex' => $item->options->color_hexa ?? null,
+                'color_hex' => $item->options->color_hex ?? null,
             ];
         }
 
