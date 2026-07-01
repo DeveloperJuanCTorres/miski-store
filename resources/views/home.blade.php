@@ -166,10 +166,10 @@
 <!-- Categories Section -->
 <section class="py-5">
     <div class="container container-max px-4 px-md-5 py-5">
-        <div class="d-flex flex-column flex-md-row justify-content-between align-items-end mb-5">
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mb-5">
             <div>
                 <h2 class="font-display h2 mb-1">Colecciones Seleccionadas</h2>
-                <p class="text-on-surface-variant mb-0">Compre por mundo sensorial</p>
+                <p class="text-center mb-0">Compre por mundo sensorial</p>
             </div>
             <a class="text-primary-custom label-caps border-bottom border-primary text-decoration-none pb-1" href="#">Ver todas las categorías</a>
         </div>
