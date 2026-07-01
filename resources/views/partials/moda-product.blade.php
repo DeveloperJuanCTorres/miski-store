@@ -110,7 +110,7 @@
                         <!-- Colors -->
                         <div class="color-section d-none" id="colorSection">
 
-                            <span class="quantity-label mb-2 d-block">
+                            <span class="quantity-label mb-2 d-block" id="selectedColorName">
                                 Color
                             </span>
 

@@ -63,6 +63,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const colorStockText = document.getElementById('colorStockText');
 
+    const selectedColorName = document.getElementById('selectedColorName');
+
     let selectedColor = null;
     let selectedStock = 0;
 
@@ -228,6 +230,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 div.dataset.stock = color.pivot.stock;
 
+                div.dataset.name = color.name;
+
                 if(index==0){
 
                     div.classList.add('active');
@@ -235,6 +239,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     selectedStock = color.pivot.stock;
 
                     colorStockText.innerText = `Stock disponible: ${selectedStock}`;
+
+                    selectedColorName.innerText = `Color: ${color.name}`;
 
                 }
 
@@ -250,6 +256,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
                     selectedColor = this.dataset.id;
                     selectedStock = parseInt(this.dataset.stock);
+
+                    selectedColorName.innerText = `Color: ${this.dataset.name}`;
 
                     colorStockText.innerText = `Stock disponible: ${selectedStock}`;
 
