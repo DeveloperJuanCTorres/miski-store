@@ -43,6 +43,9 @@ Route::post('/cart/remove', [CartController::class, 'destroy'])->name('cart.remo
 Route::post('/checkout/pedido', [PedidoController::class, 'pedido'])
     ->name('checkout.pedido');
 
+Route::get('/buscar-productos',[HomeController::class,'buscarProductos'])
+    ->name('buscar.productos');
+
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();

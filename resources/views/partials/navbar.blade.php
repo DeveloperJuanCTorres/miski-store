@@ -122,7 +122,23 @@
         <!-- RIGHT -->
         <div class="d-none d-lg-flex align-items-center gap-3">
 
-            <div class="search-container">
+        <div class="search-container">
+
+            <input
+                id="searchProductDesktop"
+                class="form-control search-input"
+                placeholder="Buscar perfumes..."
+                autocomplete="off">
+
+            <button class="search-btn">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+
+            <div id="searchResultsDesktop" class="search-results"></div>
+
+        </div>
+
+            <!-- <div class="search-container">
 
                 <input
                     id="searchProductDesktop"
@@ -134,7 +150,7 @@
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
 
-            </div>
+            </div> -->
 
         </div>
 
@@ -180,7 +196,21 @@
     <div class="offcanvas-body px-4 d-flex flex-column">
 
         <!-- SEARCH -->
-        <div class="mobile-search mb-4">
+         <div class="mobile-search mb-4">
+
+            <button class="search-btn">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+
+            <input
+                id="searchProductMobile"
+                placeholder="Buscar perfumes..."
+                autocomplete="off">
+
+            <div id="searchResultsMobile" class="search-results"></div>
+
+        </div>
+        <!-- <div class="mobile-search mb-4">
 
             <button type="button" id="btnSearchMobile" class="search-btn">
                 <i class="fa-solid fa-magnifying-glass"></i>
@@ -189,11 +219,9 @@
             <input
                 type="text"
                 id="searchProductMobile"
-                placeholder="Buscar productos...">
-            
-            
+                placeholder="Buscar productos...">   
 
-        </div>
+        </div> -->
 
         <!-- MENU -->
         <ul class="mobile-nav-list">

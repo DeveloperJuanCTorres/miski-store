@@ -80,9 +80,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const button = e.target.closest('.btnQuickView');
 
+        if(!button) return;
+
         console.log('COLORS RAW:', button.dataset.colors);
 
-        if(!button) return;
+        
 
         // PRODUCT ID
         currentProductId = button.dataset.id;
@@ -878,3 +880,210 @@ function actualizarMiniCart(items)
     });
 
 }
+
+
+
+let timer;
+
+$('#searchProductDesktop').on('keyup', function(){
+
+    clearTimeout(timer);
+
+    let texto = $(this).val();
+
+    timer = setTimeout(function(){
+
+        buscarProductos(texto,'#searchResultsDesktop');
+
+    },300);
+
+});
+
+function buscarProductos(texto, contenedor) {
+
+    if (texto.length < 2) {
+        $(contenedor).hide();
+        return;
+    }
+
+    $.get('/buscar-productos', { buscar: texto }, function (data) {
+
+        let html = '';
+
+        // =========================
+        // PRODUCTOS
+        // =========================
+        if (data.products.length > 0) {
+
+            html += `
+                <div class="search-group-title px-3">
+                    <i class="fa-solid fa-box-open me-2"></i>
+                    Productos
+                </div>
+            `;
+
+            data.products.forEach(function (p) {
+
+                let imagen = '/images/no-image.png';
+
+                if (p.images) {
+
+                    try {
+
+                        let imgs = JSON.parse(p.images);
+
+                        if (imgs.length) {
+                            imagen = '/storage/' + imgs[0];
+                        }
+
+                    } catch (e) {}
+
+                }
+
+                html += `
+                    <a href="/tienda?search=${encodeURIComponent(p.name)}"
+                       class="search-item">
+
+                        <img src="${imagen}">
+
+                        <div class="search-info">
+
+                            <div class="search-name">
+                                ${p.name}
+                            </div>
+
+                            <div>
+
+                                ${
+                                    p.price_oferta
+
+                                    ?
+
+                                    `
+                                    <span class="old-price">
+                                        S/. ${p.price}
+                                    </span>
+
+                                    <span class="search-price">
+                                        S/. ${p.price_oferta}
+                                    </span>
+                                    `
+
+                                    :
+
+                                    `
+                                    <span class="search-price">
+                                        S/. ${p.price}
+                                    </span>
+                                    `
+
+                                }
+
+                            </div>
+
+                        </div>
+
+                    </a>
+                `;
+            });
+        }
+
+        // =========================
+        // MARCAS
+        // =========================
+        if (data.brands.length > 0) {
+
+            html += `
+                <div class="search-group-title px-3">
+                    <i class="fa-solid fa-tags me-2"></i>
+                    Marcas
+                </div>
+            `;
+
+            data.brands.forEach(function (b) {
+
+                html += `
+                    <a href="/tienda?brand=${b.id}"
+                       class="search-item">
+
+                        <div class="search-info">
+
+                            <div class="search-name">
+                                ${b.name}
+                            </div>
+
+                            <small class="text-muted">
+                                Marca
+                            </small>
+
+                        </div>
+
+                    </a>
+                `;
+
+            });
+
+        }
+
+        // =========================
+        // CATEGORIAS
+        // =========================
+        if (data.categories.length > 0) {
+
+            html += `
+                <div class="search-group-title px-3">
+                    <i class="fa-solid fa-layer-group me-2"></i>
+                    Categorías
+                </div>
+            `;
+
+            data.categories.forEach(function (c) {
+
+                html += `
+                    <a href="/tienda?category=${c.id}"
+                       class="search-item">
+
+                        <div class="search-info">
+
+                            <div class="search-name">
+                                ${c.name}
+                            </div>
+
+                            <small class="text-muted">
+                                Categoría
+                            </small>
+
+                        </div>
+
+                    </a>
+                `;
+
+            });
+
+        }
+
+        if (html === '') {
+
+            html = `
+                <div class="no-results">
+                    No se encontraron resultados
+                </div>
+            `;
+
+        }
+
+        $(contenedor).html(html).show();
+
+    });
+
+}
+
+$(document).click(function(e){
+
+    if(!$(e.target).closest('.search-container').length){
+
+        $('#searchResultsDesktop').hide();
+
+    }
+
+});

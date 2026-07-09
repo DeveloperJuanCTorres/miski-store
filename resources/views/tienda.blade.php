@@ -55,6 +55,7 @@
                                 name="brand"
                                 value="{{ $brand->id }}"
                                 id="brand{{ $brand->id }}"
+                                {{ request('brand') == $brand->id ? 'checked' : '' }}
                             >
                             <label 
                                 class="form-check-label text-variant"
@@ -114,9 +115,9 @@
         </section>
     </div>
 </div>
-<pre>
+<!-- <pre>
                         {{ print_r(Cart::content()->toArray(), true) }}
-                        </pre>
+                        </pre> -->
 
 @include('partials.moda-product')
 
@@ -269,16 +270,17 @@
         // AUTO FILTRAR SI VIENE UNA CATEGORÍA
         const selectedCategory = document.querySelector('.filter-category:checked');
 
-        if(selectedCategory)
+        const selectedBrand = document.querySelector('.filter-brand:checked');
+
+        if(selectedCategory || selectedBrand)
         {
             filterProducts();
 
-            // LIMPIA ?category= DE LA URL
-            window.history.replaceState(
-                {},
-                document.title,
-                window.location.pathname
-            );
+            // window.history.replaceState(
+            //     {},
+            //     document.title,
+            //     window.location.pathname
+            // );
         }
 
     });

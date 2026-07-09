@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Banner;
+use App\Models\Brand;
 use App\Models\Company;
 use App\Models\Policy;
 use App\Models\Product;
@@ -60,5 +61,45 @@ class HomeController extends Controller
         $categories = Taxonomy::all();
         $envio = Shipment::first();
         return view('envios', compact('company', 'categories', 'envio'));
+    }
+
+    public function buscarProductos(Request $request)
+    {
+        $buscar = trim($request->buscar);
+
+        // PRODUCTOS
+        $productos = Product::where('is_active', 1)
+            ->where('name', 'like', "%{$buscar}%")
+            ->take(5)
+            ->get([
+                'id',
+                'name',
+                'slug',
+                'images',
+                'price',
+                'price_oferta'
+            ]);
+
+        // MARCAS
+        $marcas = Brand::where('name', 'like', "%{$buscar}%")
+            ->take(5)
+            ->get([
+                'id',
+                'name'
+            ]);
+
+        // CATEGORÍAS
+        $categorias = Taxonomy::where('name', 'like', "%{$buscar}%")
+            ->take(5)
+            ->get([
+                'id',
+                'name'
+            ]);
+
+        return response()->json([
+            'products' => $productos,
+            'brands' => $marcas,
+            'categories' => $categorias
+        ]);
     }
 }

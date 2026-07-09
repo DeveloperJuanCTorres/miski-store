@@ -10,7 +10,7 @@
     <title>{{ config('app.name', 'Miski Store') }}</title>
 
     <?php
-    $version = '1993.5.2';
+    $version = '1993.5.3';
     ?>
 
     <link rel="apple-touch-icon" sizes="180x180" href="logos/apple-touch-icon.png">
@@ -199,11 +199,12 @@
     </script>
 
     <!-- Bootstrap JS -->
+     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="{{ asset('js/general.js') }}?v=<?php echo $version ?>"></script>
     <script src="{{asset('js/ubigeo.js')}}?v=<?php echo $version ?>"></script>
-    
+
 </body>
 </html>
