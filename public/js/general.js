@@ -899,6 +899,33 @@ $('#searchProductDesktop').on('keyup', function(){
 
 });
 
+$('#searchProductMobile').on('keyup', function(){
+
+    clearTimeout(timer);
+
+    let texto = $(this).val();
+
+    timer = setTimeout(function(){
+
+        buscarProductos(texto,'#searchResultsMobile');
+
+    },300);
+
+});
+
+$('#btnSearchMobile').on('click', function(){
+
+    let texto = $('#searchProductMobile').val().trim();
+
+    if(texto.length < 2){
+        return;
+    }
+
+    window.location.href =
+        '/tienda?search=' + encodeURIComponent(texto);
+
+});
+
 function buscarProductos(texto, contenedor) {
 
     if (texto.length < 2) {

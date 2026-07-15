@@ -138,20 +138,6 @@
 
         </div>
 
-            <!-- <div class="search-container">
-
-                <input
-                    id="searchProductDesktop"
-                    class="form-control search-input"
-                    placeholder="Buscar productos..."
-                    type="text" />
-
-                <button type="button" id="btnSearchDesktop" class="search-btn">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </button>
-
-            </div> -->
-
         </div>
 
     </div>
@@ -198,8 +184,13 @@
         <!-- SEARCH -->
          <div class="mobile-search mb-4">
 
-            <button class="search-btn">
+            <button
+                type="button"
+                id="btnSearchMobile"
+                class="search-btn">
+
                 <i class="fa-solid fa-magnifying-glass"></i>
+
             </button>
 
             <input
