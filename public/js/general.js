@@ -1087,3 +1087,31 @@ $(document).click(function(e){
     }
 
 });
+
+
+
+const thumbContainer = document.getElementById('thumbnailContainer');
+
+document.getElementById('thumbNext').onclick=function(){
+
+    thumbContainer.scrollBy({
+
+        left:250,
+
+        behavior:'smooth'
+
+    });
+
+}
+
+document.getElementById('thumbPrev').onclick=function(){
+
+    thumbContainer.scrollBy({
+
+        left:-250,
+
+        behavior:'smooth'
+
+    });
+
+}

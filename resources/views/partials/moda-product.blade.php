@@ -29,8 +29,24 @@
                         </div>
 
                         <!-- Thumbnails -->
-                        <div class="thumbnail-wrapper" id="thumbnailContainer">
-                            <!-- Thumbnails will be dynamically added here -->  
+                        <!-- <div class="thumbnail-wrapper" id="thumbnailContainer">
+                            
+                        </div> -->
+
+                        <div class="thumbnail-carousel">
+
+                            <button class="thumb-nav prev" id="thumbPrev">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </button>
+
+                            <div class="thumbnail-wrapper" id="thumbnailContainer">
+                                <!-- thumbnails -->
+                            </div>
+
+                            <button class="thumb-nav next" id="thumbNext">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </button>
+
                         </div>
 
                     </div>
